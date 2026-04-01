@@ -3,67 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Doors - Professional Door Refinishing in Conroe, TX</title>
+    <title>Grand Doors - Professional Door Refinishing | Conroe, TX</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 100px 20px; }
-        .hero h1 { font-size: 3em; margin-bottom: 20px; }
-        .hero p { font-size: 1.3em; margin-bottom: 30px; }
-        .cta-button { display: inline-block; background: #28a745; color: white; padding: 20px 40px; font-size: 1.5em; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .cta-button:hover { background: #218838; }
-        .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-        .services { background: #f8f9fa; }
-        .services h2 { text-align: center; font-size: 2.5em; margin-bottom: 40px; }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .service-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
-        .service-card h3 { font-size: 1.8em; margin-bottom: 10px; color: #667eea; }
-        .price { font-size: 2em; font-weight: bold; color: #28a745; margin: 15px 0; }
-        .contact { text-align: center; background: #667eea; color: white; padding: 80px 20px; }
-        .contact h2 { font-size: 2.5em; margin-bottom: 20px; }
-        .contact p { font-size: 1.2em; margin-bottom: 30px; }
-        .phone { font-size: 2.5em; font-weight: bold; margin: 20px 0; }
-    </style>
-</head>
-<body>
-    <div class="hero">
-        <h1>Grand Doors</h1>
-        <p>Professional Door Refinishing in Conroe, Texas</p>
+        body { font-family: 'Georgia', serif; line-height: 1.6; color: #2c1810; background: #f5f0eb; }
+        .hero { background: linear-gradient(135deg, #6d1f1f 0%, #3d1308 100%); color: #f5f0eb; text-align: center; padding: 120px 20px 80px; }
+        .hero h1 { font-size: 4em; margin-bottom: 20px; color: #d4af37; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero .tagline { font-size: 1.5em; margin-bottom: 40px; color: #f5f0eb; font-style: italic; }
+        .cta-button { display: inline-block; background: #d4af37; color: #2c1810; padding: 20px 50px; font-size: 1.3em; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
+        .cta-button:hover { background: #b8941f; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
+        .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 3em; margin-bottom: 20px; color: #6d1f1f; }
+        .section-subtitle { text-align: center; font-size: 1.2em; margin-bottom: 60px; color: #5d4037; font-style: italic; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .gallery img:hover { transform: scale(1.05); }
+        .services { background: #fff; border-radius: 20px; padding: 60px 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .service-card { text-align: center; padding: 30px; border-radius: 15px; background: linear-gradient(135deg, #f5f0eb 0%, #e8ddd3 100%); border: 2px solid #d4af37; transition: all 0.3s; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
+        .service-card h3 { font-size: 2em; margin-bottom: 15px; color: #6d1f1f; }
+        .price { font-size: 2.5em; font-weight: bold; color: #d4af37; margin: 20px 0; }
+        .service-card p { font-size: 1.1em; color: #5d4037; line-height: 1.6; }
+        .why-choose { background: linear-gradient(135deg, #5d4037 0%, #3d1308 100%); color: #f5f0eb; text-align: center; padding: 80px 20px; }
+        .why-choose h2 { color: #d4af37; margin-bottom: 40px; }
+        .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .benefit { padding: 20px; }
+        .benefit h3 { color: #d4af37; font-size: 1.5em; margin-bottom: 10px; }
+        .contact { text-align: center; background: #6d1f1f; color: #f5f0eb; padding: 100px 20px; }
+        .contact h2 { font-size: 3em; margin-bottom: 20px; color: #d4af37; }
+        .contact p { font-size: 1.3em; margin-bottom: 30px; }
+        .phone { font-size: 3em; font-weight: bold; margin: 30px 0; color: #d4af37; }
         <a href="tel:+19364448756" class="cta-button">CALL NOW: (936) 444-8756</a>
     </div>
-
+    <div class="section">
+        <h2 class="section-title">Our Work</h2>
+<p class="section-subtitle">Professional craftsmanship that transforms your home</p>
+        <div class="gallery">
+            <img src="images/file_22---d689c8ae-6fe6-40ae-b1d4-535a8be582d9.jpg" alt="Door refinishing">
+            <img src="images/file_23---a27d38f6-06d0-4f02-b605-2abba894c935.jpg" alt="Door restoration">
+            <img src="images/file_24---7758785a-b4e6-4cf1-91f2-8a19267c8e7e.jpg" alt="Refinished door">
+            <img src="images/file_25---7747ef89-0c10-433b-a9df-10e13803cae4.jpg" alt="Door painting">
+            <img src="images/file_27---19d92af6-b238-4a59-90be-5f832b74cf0e.jpg" alt="Door refinishing">
+            <img src="images/file_28---3db62cdf-9f14-4511-bd6e-3970c9a44da3.jpg" alt="Door restoration">
+            <img src="images/file_29---afb9a228-f0e3-4cc1-b9c0-e947b0f14cbf.jpg" alt="Professional door work">
+            <img src="images/file_30---415ee930-ecae-468f-98e5-c5a8ede872b2.jpg" alt="Door reconditioning">
+            <img src="images/file_31---45573345-bf40-4bf9-9457-6bca41b1d9b3.jpg" alt="Stained door">
+            <img src="images/file_32---93cafd14-a18a-4b49-9acd-d1446b29a113.jpg" alt="Front door refinishing">
+            <img src="images/file_33---68bc7550-e160-4b32-a3d8-184730efe506.jpg" alt="Door restoration">
+            <img src="images/file_34---f5724cbe-402b-4300-b2c6-16ab530db176.jpg" alt="Refinished entrance">
+            <img src="images/file_35---19ff26dc-1c16-47f6-8fed-8828d5f43839.jpg" alt="Professional door service">
+        </div>
+    </div>
     <div class="section services">
-        <h2>Our Services</h2>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Expert craftsmanship at honest prices</p>
         <div class="service-grid">
             <div class="service-card">
                 <h3>Refinish</h3>
                 <p class="price">$99</p>
-                <p>Professional door refinishing to restore beauty and protect against Texas sun damage.</p>
+                <p>Restore your door's natural beauty with professional refinishing. Perfect for doors showing wear from Texas sun and weather.</p>
             </div>
             <div class="service-card">
                 <h3>Recondition</h3>
                 <p class="price">$199</p>
-                <p>Complete strip and refinish for severely damaged doors. Like new again!</p>
+                <p>Complete strip and refinish for heavily damaged doors. We bring them back to like-new condition with expert care.</p>
             </div>
             <div class="service-card">
                 <h3>Paint</h3>
                 <p class="price">$150</p>
-                <p>Expert door painting with premium paints for lasting curb appeal.</p>
+                <p>Professional door painting with premium paints that last. Transform your entryway with lasting curb appeal.</p>
             </div>
             <div class="service-card">
                 <h3>Weatherstripping</h3>
                 <p class="price">Call for Quote</p>
-                <p>Save on AC bills! Seal your door and keep the cool air inside.</p>
+                <p>Lower your energy bills and keep your home comfortable. Professional weatherstripping seals out heat and saves you money.</p>
             </div>
         </div>
     </div>
-
+    <div class="why-choose">
+        <h2>Why Choose Grand Doors?</h2>
+        <div class="benefits">
+            <div class="benefit">
+                <h3>✓ Expert Craftsmanship</h3>
+                <p>Years of experience restoring and refinishing doors throughout Texas</p>
+            </div>
+            <div class="benefit">
+                <h3>✓ Honest Pricing</h3>
+                <p>No hidden fees. Quality work at prices that respect your budget.</p>
+            </div>
+            <div class="benefit">
+                <h3>✓ Local Service</h3>
+                <p>Serving Conroe, The Woodlands, and surrounding communities</p>
+            </div>
+        </div>
+    </div>
     <div class="contact">
-        <h2>Ready to Restore Your Doors?</h2>
-        <p>Serving Conroe, The Woodlands, and surrounding areas</p>
+        <h2>Ready to Transform Your Doors?</h2>
+        <p>Get a free estimate today</p>
         <div class="phone">(936) 444-8756</div>
-        <p>Email: granddoorsrefinishing21@gmail.com</p>
-        <a href="tel:+19364448756" class="cta-button" style="margin-top: 20px;">CALL NOW</a>
+        <p class="email">granddoorsrefinishing21@gmail.com</p>
+        <a href="tel:+19364448756" class="cta-button" style="margin-top: 30px;">CALL NOW</a>
     </div>
 </body>
 </html>
