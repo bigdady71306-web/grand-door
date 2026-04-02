@@ -50,12 +50,12 @@
         
         /* Hero Section */
         .hero { 
-            background: linear-gradient(135deg, rgba(109, 31, 31, 0.9) 0%, rgba(61, 19, 8, 0.9) 100%), 
-                        url('images/circular-after.jpg') center/cover no-repeat;
+            background: url('images/hero-grand-doors.jpg') center/cover no-repeat;
             color: #f5f0eb; 
             text-align: center; 
             padding: 150px 20px; 
             position: relative;
+            min-height: 100vh;
         }
         .hero h1 { font-family: 'Brush Script MT', cursive; font-size: 5em; margin-bottom: 20px; color: #d4af37; text-shadow: 3px 3px 6px rgba(0,0,0,0.7); letter-spacing: 2px; font-weight: normal; }
         .hero .tagline { font-size: 2em; margin-bottom: 40px; color: #f5f0eb; font-style: italic; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
@@ -145,11 +145,11 @@
 
 
     <section id="home" class="hero">
-        <h1>GRAND DOORS</h1>
-        <p class="tagline">Design. Quality. Craftsmanship.</p>
-        <a href="preview.html" class="cta-button" style="background: #d4af37;">
-            ✨ See Your Door Transformed (AI Preview)
-        </a>
+        <div style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);">
+            <a href="preview.html" class="cta-button" style="background: #d4af37;">
+                ✨ See Your Door Transformed (AI Preview)
+            </a>
+        </div>
     </section>
 
     <section id="portfolio" class="portfolio">
