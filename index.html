@@ -14,182 +14,131 @@
         gtag('config', 'G-Z2B8WT5L8Z');
     </script>
     
-    <!-- Facebook Pixel -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'YOUR_PIXEL_ID');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
-    /></noscript>
-    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Georgia', serif; line-height: 1.6; color: #2c1810; background: url('images/hero-grand-doors.jpg') center/cover fixed no-repeat; }
         
-
-        .header-top { background: #6d1f1f; color: #f5f0eb; text-align: center; padding: 8px; font-size: 0.95em; }
-        .company-name { font-family: 'Georgia', serif; font-size: 1.2em; color: #d4af37; text-align: center; padding: 8px 0 4px; background: #000; margin: 0; font-weight: normal; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .header-top a { color: #d4af37; text-decoration: none; font-weight: bold; }
-        .header-main { display: flex; flex-direction: column; align-items: center; padding: 8px 30px 6px; max-width: 1400px; margin: 0 auto; gap: 8px; }
-        .logo-container { text-align: center; }
-        .logo-container img { max-width: 120px; height: auto; }
-        nav { display: flex; gap: 30px; }
-        nav a { color: #d4af37; text-decoration: none; font-weight: 700; font-size: 0.95em; transition: all 0.3s; padding: 6px 12px; border-radius: 5px; text-transform: uppercase; letter-spacing: 1px; }
-        nav a:hover { background: rgba(212, 175, 55, 0.2); }
+        /* Navigation Menu */
+        nav { position: fixed; top: 50%; right: 30px; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 15px; }
+        .nav-button { background: rgba(109, 31, 31, 0.95); color: #d4af37; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; border: 2px solid #d4af37; cursor: pointer; text-align: center; min-width: 200px; }
+        .nav-button:hover { background: #d4af37; color: #2c1810; transform: translateX(-5px); }
+        
+        /* Submenu for Services */
+        .nav-item { position: relative; }
+        .submenu { display: none; position: absolute; right: 220px; top: 0; background: rgba(109, 31, 31, 0.95); border-radius: 8px; min-width: 180px; border: 2px solid #d4af37; }
+        .nav-item:hover .submenu { display: block; }
+        .submenu a { display: block; padding: 12px 20px; color: #d4af37; text-decoration: none; font-weight: bold; transition: all 0.3s; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .submenu a:last-child { border-bottom: none; }
+        .submenu a:hover { background: #d4af37; color: #2c1810; }
         
         /* Hero Section */
-        .hero { 
-            background: transparent;
-            color: #f5f0eb; 
-            text-align: center; 
-            padding: 150px 20px; 
-            position: relative;
-            min-height: 100vh;
-        }
-        .hero h1 { font-family: 'Brush Script MT', cursive; font-size: 5em; margin-bottom: 20px; color: #d4af37; text-shadow: 3px 3px 6px rgba(0,0,0,0.7); letter-spacing: 2px; font-weight: normal; }
-        .hero .tagline { font-size: 2em; margin-bottom: 40px; color: #f5f0eb; font-style: italic; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
-        .cta-button { display: inline-block; background: #d4af37; color: #2c1810; padding: 20px 50px; font-size: 1.4em; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5); text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; }
-        .cta-button:hover { background: #b8941f; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.7); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-cta { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); }
+        .hero-cta p { font-size: 1.8em; color: #d4af37; margin-bottom: 20px; text-shadow: 3px 3px 6px rgba(0,0,0,0.9); font-weight: bold; }
+        .cta-button { background: #d4af37; color: #2c1810; padding: 20px 50px; font-size: 1.4em; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5); text-transform: uppercase; display: inline-block; border: none; cursor: pointer; }
+        .cta-button:hover { background: #b8941f; transform: translateY(-3px); }
         
-        /* Portfolio Section */
-        .portfolio { padding: 100px 20px; max-width: 1400px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 3.5em; margin-bottom: 20px; color: #6d1f1f; }
-        .section-subtitle { text-align: center; font-size: 1.4em; margin-bottom: 80px; color: #5d4037; font-style: italic; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
-        .portfolio-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15); transition: transform 0.3s; }
-        .portfolio-item:hover { transform: translateY(-10px); }
-        .portfolio-item h3 { text-align: center; padding: 20px; background: linear-gradient(135deg, #6d1f1f 0%, #3d1308 100%); color: #d4af37; font-size: 1.8em; }
+        /* Content Sections */
+        .content-section { background: rgba(245, 240, 235, 0.98); padding: 80px 40px; margin: 40px auto; max-width: 1400px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; }
+        .content-section.active { display: block; }
+        .section-title { font-size: 3em; color: #6d1f1f; margin-bottom: 40px; text-align: center; }
+        
+        /* Portfolio Grid */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .portfolio-item { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .portfolio-item h3 { background: linear-gradient(135deg, #6d1f1f 0%, #3d1308 100%); color: #d4af37; padding: 15px; text-align: center; font-size: 1.5em; }
         .before-after { display: grid; grid-template-columns: 1fr 1fr; }
         .before-after div { position: relative; }
-        .before-after img { width: 100%; height: 350px; object-fit: cover; }
-        .before-after .label { position: absolute; top: 10px; left: 10px; background: rgba(212, 175, 55, 0.95); color: #2c1810; padding: 8px 20px; border-radius: 5px; font-weight: bold; font-size: 1.1em; }
+        .before-after img { width: 100%; height: 300px; object-fit: cover; }
+        .before-after .label { position: absolute; top: 10px; left: 10px; background: rgba(212, 175, 55, 0.95); color: #2c1810; padding: 6px 15px; border-radius: 5px; font-weight: bold; }
         
-        /* Services Section */
-        .services { background: linear-gradient(135deg, #5d4037 0%, #3d1308 100%); color: #f5f0eb; padding: 100px 20px; }
-        .services .section-title { color: #d4af37; }
-        .services .section-subtitle { color: #f5f0eb; }
-        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto 40px; }
-        .service-card { background: rgba(245, 240, 235, 0.1); backdrop-filter: blur(10px); text-align: center; padding: 40px 30px; border-radius: 15px; border: 2px solid #d4af37; transition: all 0.3s; }
-        .service-card:hover { transform: translateY(-5px); background: rgba(245, 240, 235, 0.15); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
-        .service-card h3 { font-size: 2.2em; margin-bottom: 15px; color: #d4af37; }
-        .price { font-size: 2.8em; font-weight: bold; color: #d4af37; margin: 20px 0; }
-        .service-card p { font-size: 1.1em; color: #f5f0eb; line-height: 1.7; }
-        .weatherstripping-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .weatherstripping-card { background: rgba(245, 240, 235, 0.1); backdrop-filter: blur(10px); text-align: center; padding: 30px 20px; border-radius: 10px; border: 2px solid #d4af37; }
-        .weatherstripping-card h4 { color: #d4af37; font-size: 1.5em; margin-bottom: 10px; }
-        .weatherstripping-card .price { font-size: 2em; }
-        
-        /* Quote Form Section */
-        .quote-form { padding: 100px 20px; max-width: 800px; margin: 0 auto; background: #fff; }
-        .quote-form .section-title { color: #6d1f1f; }
-        .form-container { background: #f5f0eb; padding: 50px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 8px; color: #2c1810; font-weight: bold; font-size: 1.1em; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; font-family: inherit; background: #fff; }
-        .form-group textarea { min-height: 150px; resize: vertical; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .upload-section { border: 2px dashed #d4af37; padding: 30px; text-align: center; border-radius: 8px; background: #fff; margin-bottom: 25px; }
-        .upload-section input[type="file"] { display: none; }
-        .upload-label { cursor: pointer; color: #6d1f1f; font-weight: bold; font-size: 1.1em; }
-        .upload-label:hover { color: #d4af37; }
-        .submit-button { width: 100%; padding: 20px; background: #6d1f1f; color: #f5f0eb; font-size: 1.3em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .submit-button:hover { background: #8b2828; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(109, 31, 31, 0.5); }
+        /* Services Grid */
+        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 50px; }
+        .service-card { background: rgba(109, 31, 31, 0.1); padding: 30px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center; }
+        .service-card h3 { color: #6d1f1f; font-size: 2em; margin-bottom: 15px; }
+        .price { font-size: 2.5em; font-weight: bold; color: #6d1f1f; margin: 15px 0; }
+        .service-card p { font-size: 1.1em; line-height: 1.6; }
         
         /* Contact Section */
-        .contact { text-align: center; background: #6d1f1f; color: #f5f0eb; padding: 100px 20px; }
-        .contact h2 { font-size: 3.5em; margin-bottom: 20px; color: #d4af37; }
-        .contact p { font-size: 1.4em; margin-bottom: 30px; }
-        .phone { font-size: 3.5em; font-weight: bold; margin: 30px 0; color: #d4af37; }
-        .email { font-size: 1.3em; margin: 20px 0; color: #f5f0eb; }
+        .contact-info { text-align: center; font-size: 1.3em; margin-bottom: 40px; }
+        .phone-number { font-size: 2.5em; color: #6d1f1f; font-weight: bold; margin: 20px 0; }
+        .phone-number a { color: #6d1f1f; text-decoration: none; }
+        .phone-number a:hover { color: #d4af37; }
         
-        /* Modal */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
-        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 40px; border-radius: 15px; max-width: 600px; box-shadow: 0 10px 50px rgba(0,0,0,0.5); }
-        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .close:hover { color: #6d1f1f; }
-        .modal h3 { color: #6d1f1f; margin-bottom: 20px; font-size: 2em; }
-        .modal p { color: #2c1810; font-size: 1.1em; line-height: 1.8; }
+        /* Appointment Scheduler */
+        .scheduler { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .scheduler input, .scheduler select { width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; }
+        .scheduler button { width: 100%; padding: 20px; background: #6d1f1f; color: #f5f0eb; font-size: 1.3em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        .scheduler button:hover { background: #8b2828; transform: translateY(-2px); }
         
-        /* Success Message */
-        .success-message { display: none; background: #4CAF50; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: bold; }
-        
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .header-main { flex-direction: column; gap: 20px; }
-            nav { flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 2.5em; }
-            .hero .tagline { font-size: 1.3em; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .service-grid { grid-template-columns: 1fr; }
-            .weatherstripping-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .form-container { padding: 30px 20px; }
+            nav { position: static; transform: none; flex-direction: row; flex-wrap: wrap; padding: 10px; }
+            .portfolio-grid, .service-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#" class="nav-button" onclick="showSection('transform'); return false;">See Your Door Transformed</a>
+        <a href="#" class="nav-button" onclick="showSection('portfolio'); return false;">Portfolio</a>
+        <div class="nav-item">
+            <a href="#" class="nav-button">Our Services ▼</a>
+            <div class="submenu">
+                <a href="#" onclick="showSection('doors'); return false;">Doors</a>
+                <a href="#" onclick="showSection('weatherstripping'); return false;">Weatherstripping</a>
+            </div>
+        </div>
+        <a href="#" class="nav-button" onclick="showSection('contact'); return false;">Contact Now</a>
+    </nav>
 
-
-    <section id="home" class="hero">
-        <div style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); text-align: center;">
-            <p style="font-size: 1.5em; color: #d4af37; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">See Your Door Transformed</p>
-            <a href="preview.html" class="cta-button" style="background: #d4af37;">
-                Click Here
-            </a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-cta">
+            <p>See Your Door Transformed</p>
+            <a href="preview.html" class="cta-button">Click Here</a>
         </div>
     </section>
 
-    <section id="portfolio" class="portfolio">
+    <!-- Portfolio Section -->
+    <section class="content-section" id="portfolio">
         <h2 class="section-title">Portfolio</h2>
-        <p class="section-subtitle">Transforming doors across Conroe & The Woodlands</p>
-        
         <div class="portfolio-grid">
             <div class="portfolio-item">
                 <h3>Elegant Double Doors</h3>
                 <div class="before-after">
                     <div>
-                        <img src="images/file_29---afb9a228-f0e3-4cc1-b9c0-e947b0f14cbf.jpg" alt="Before restoration">
+                        <img src="images/file_29---afb9a228-f0e3-4cc1-b9c0-e947b0f14cbf.jpg" alt="Before">
                         <span class="label">BEFORE</span>
                     </div>
                     <div>
-                        <img src="images/file_30---415ee930-ecae-468f-98e5-c5a8ede872b2.jpg" alt="After restoration">
+                        <img src="images/file_30---415ee930-ecae-468f-98e5-c5a8ede872b2.jpg" alt="After">
                         <span class="label">AFTER</span>
                     </div>
                 </div>
             </div>
-
             <div class="portfolio-item">
                 <h3>Arched Double Doors</h3>
                 <div class="before-after">
                     <div>
-                        <img src="images/file_31---45573345-bf40-4bf9-9457-6bca41b1d9b3.jpg" alt="Before restoration">
+                        <img src="images/file_31---45573345-bf40-4bf9-9457-6bca41b1d9b3.jpg" alt="Before">
                         <span class="label">BEFORE</span>
                     </div>
                     <div>
-                        <img src="images/file_32---93cafd14-a18a-4b49-9acd-d1446b29a113.jpg" alt="After restoration">
+                        <img src="images/file_32---93cafd14-a18a-4b49-9acd-d1446b29a113.jpg" alt="After">
                         <span class="label">AFTER</span>
                     </div>
                 </div>
             </div>
-
             <div class="portfolio-item">
                 <h3>Circular Glass Design</h3>
                 <div class="before-after">
                     <div>
-                        <img src="images/circular-after.jpg" alt="Before restoration">
+                        <img src="images/circular-after.jpg" alt="Before">
                         <span class="label">BEFORE</span>
                     </div>
                     <div>
-                        <img src="images/circular-before.jpg" alt="After restoration">
+                        <img src="images/circular-before.jpg" alt="After">
                         <span class="label">AFTER</span>
                     </div>
                 </div>
@@ -197,126 +146,107 @@
         </div>
     </section>
 
-    <section id="services" class="services">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Expert craftsmanship at honest prices</p>
-        
+    <!-- Doors Services Section -->
+    <section class="content-section" id="doors">
+        <h2 class="section-title">Door Services</h2>
         <div class="service-grid">
             <div class="service-card">
                 <h3>Restoration</h3>
                 <p class="price">$99</p>
                 <p>Light restoration for doors showing minor wear. We bring back the original beauty with careful attention to detail.</p>
             </div>
-            
             <div class="service-card">
                 <h3>Refinish</h3>
                 <p class="price">$199</p>
                 <p>Complete refinishing for heavily damaged doors. Strip, sand, and apply a beautiful new finish that lasts.</p>
             </div>
-            
             <div class="service-card">
                 <h3>Paint</h3>
                 <p class="price">$150</p>
                 <p>Professional door painting with premium paints. Transform your entryway with lasting curb appeal and protection.</p>
             </div>
         </div>
+    </section>
 
-        <h3 style="text-align: center; font-size: 2.5em; color: #d4af37; margin: 60px 0 40px;">Weatherstripping Services</h3>
-        <div class="weatherstripping-grid">
-            <div class="weatherstripping-card">
-                <h4>Single Door</h4>
+    <!-- Weatherstripping Services Section -->
+    <section class="content-section" id="weatherstripping">
+        <h2 class="section-title">Weatherstripping Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Single Door</h3>
                 <p class="price">$125</p>
                 <p>Cushion weatherstripping</p>
             </div>
-            
-            <div class="weatherstripping-card">
-                <h4>Bottom Sweeps</h4>
+            <div class="service-card">
+                <h3>Bottom Sweeps</h3>
                 <p class="price">$35</p>
                 <p>Door bottom sealing</p>
             </div>
-            
-            <div class="weatherstripping-card">
-                <h4>Double Door</h4>
+            <div class="service-card">
+                <h3>Double Door</h3>
                 <p class="price">$135</p>
                 <p>Complete double door seal</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <h2>Ready to Transform Your Doors?</h2>
-        <p>Serving Conroe, The Woodlands, and surrounding communities</p>
-        <div class="phone">(936) 444-8756</div>
-        <p class="email">granddoorsrefinishing21@gmail.com</p>
-        <a href="tel:+19364448756" class="cta-button" style="margin-top: 30px;">Call Now for Free Estimate</a>
+    <!-- Contact Section -->
+    <section class="content-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-info">
+            <p>Serving Conroe, The Woodlands, and surrounding communities</p>
+            <div class="phone-number">
+                <a href="tel:+19364448756">(936) 444-8756</a>
+            </div>
+            <p>granddoorsrefinishing21@gmail.com</p>
+        </div>
         
-        <!-- Square Payment Button (full payment only) -->
-        <div style="margin-top: 50px;">
-            <button onclick="window.open('https://square.link/u/CpO4tCb3', '_blank')" class="cta-button" style="background: #28a745;">
-                💳 Pay Now (Secure)
-            </button>
+        <h3 style="text-align: center; font-size: 2em; color: #6d1f1f; margin: 40px 0 30px;">Schedule Your Appointment</h3>
+        <div class="scheduler">
+            <input type="text" placeholder="Your Name *" required>
+            <input type="tel" placeholder="Phone Number *" required>
+            <input type="email" placeholder="Email Address *" required>
+            <input type="date" placeholder="Preferred Date" required>
+            <select required>
+                <option value="">Select Service...</option>
+                <option value="restoration">Restoration ($99)</option>
+                <option value="refinish">Refinish ($199)</option>
+                <option value="paint">Paint ($150)</option>
+                <option value="weatherstripping-single">Weatherstripping - Single Door ($125)</option>
+                <option value="weatherstripping-double">Weatherstripping - Double Door ($135)</option>
+                <option value="weatherstripping-sweep">Bottom Sweeps ($35)</option>
+            </select>
+            <button type="button" onclick="submitAppointment()">Schedule Appointment</button>
         </div>
     </section>
 
-
-
     <script>
-        // Form submission handler
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Track conversion
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show selected section
+            if (sectionId !== 'transform') {
+                document.getElementById(sectionId).classList.add('active');
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Redirect to preview page
+                window.location.href = 'preview.html';
+            }
+        }
+        
+        function submitAppointment() {
+            // Track event
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'generate_lead', {
-                    'event_category': 'engagement',
-                    'event_label': 'Quote Request'
+                gtag('event', 'schedule_appointment', {
+                    'event_category': 'engagement'
                 });
             }
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead');
-            }
             
-            const formData = new FormData(this);
-            
-            // TODO: Connect to backend/email service
-            // For now, simulate success
-            document.getElementById('successMessage').style.display = 'block';
-            this.reset();
-            
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
-        });
-        
-        // File upload preview
-        document.getElementById('doorPhotos').addEventListener('change', function(e) {
-            const fileList = document.getElementById('fileList');
-            const files = e.target.files;
-            
-            if (files.length > 0) {
-                let fileNames = Array.from(files).map(f => f.name).join(', ');
-                fileList.textContent = `Selected: ${fileNames}`;
-            } else {
-                fileList.textContent = '';
-            }
-        });
-        
-
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+            alert('Thank you! We will contact you within 24 hours to confirm your appointment.');
+            // TODO: Add backend submission logic
+        }
     </script>
 </body>
 </html>
