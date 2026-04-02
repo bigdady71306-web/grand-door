@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Door Preview - Grand Doors</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', serif; background: #f5f0eb; color: #2c1810; }
+        
+        .preview-container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+        .preview-header { text-align: center; margin-bottom: 50px; }
+        .preview-header h1 { font-size: 3em; color: #6d1f1f; margin-bottom: 15px; }
+        .preview-header p { font-size: 1.3em; color: #5d4037; font-style: italic; }
+        
+        .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        
+        .upload-section { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .upload-section h2 { color: #6d1f1f; margin-bottom: 20px; font-size: 1.8em; }
+        
+        .upload-area { border: 3px dashed #d4af37; padding: 60px 20px; text-align: center; border-radius: 10px; background: #f5f0eb; cursor: pointer; transition: all 0.3s; }
+        .upload-area:hover { background: #ede4dd; border-color: #b8941f; }
+        .upload-area.drag-over { background: #d4af37; border-color: #6d1f1f; }
+        
+        .upload-icon { font-size: 4em; margin-bottom: 15px; }
+        .upload-text { font-size: 1.2em; color: #5d4037; }
+        
+        #fileInput { display: none; }
+        
+        .preview-image { width: 100%; max-height: 400px; object-fit: contain; margin-top: 20px; border-radius: 10px; }
+        
+        .options-section { margin-top: 30px; }
+        .option-group { margin-bottom: 20px; }
+        .option-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810; }
+        .option-group select { width: 100%; padding: 12px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; font-family: inherit; background: #fff; }
+        
+        .generate-button { width: 100%; padding: 20px; background: #6d1f1f; color: #f5f0eb; font-size: 1.3em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; margin-top: 20px; }
+        .generate-button:hover { background: #8b2828; transform: translateY(-2px); }
+        .generate-button:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+        
+        .result-section { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .result-section h2 { color: #6d1f1f; margin-bottom: 20px; font-size: 1.8em; }
+        
+        .result-placeholder { height: 400px; display: flex; align-items: center; justify-content: center; background: #f5f0eb; border-radius: 10px; color: #999; font-size: 1.2em; }
+        
+        .loading { display: none; text-align: center; padding: 40px; }
+        .loading.active { display: block; }
+        .spinner { border: 5px solid #f5f0eb; border-top: 5px solid #6d1f1f; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .comparison-view { display: none; }
+        .comparison-view.active { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .comparison-view img { width: 100%; border-radius: 10px; }
+        .comparison-label { text-align: center; font-weight: bold; font-size: 1.2em; margin-top: 10px; color: #6d1f1f; }
+        
+        .cta-buttons { display: flex; gap: 20px; margin-top: 30px; }
+        .cta-button { flex: 1; padding: 15px; font-size: 1.1em; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; text-transform: uppercase; }
+        .cta-primary { background: #d4af37; color: #2c1810; }
+        .cta-primary:hover { background: #b8941f; }
+        .cta-secondary { background: #6d1f1f; color: #f5f0eb; }
+        .cta-secondary:hover { background: #8b2828; }
+        
+        @media (max-width: 768px) {
+            .preview-grid { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1>✨ See Your Door Transformed</h1>
+            <p>Upload a photo and see what professional refinishing could do</p>
+        </div>
+        
+        <div class="preview-grid">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <h2>1. Upload Your Door Photo</h2>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📸</div>
+                    <div class="upload-text">
+                        <strong>Click to upload</strong> or drag & drop<br>
+                        <small style="color: #999;">JPG, PNG up to 10MB</small>
+                    </div>
+                </div>
+                
+                <input type="file" id="fileInput" accept="image/*">
+                
+                <img id="uploadedImage" class="preview-image" style="display: none;">
+                
+                <div class="options-section">
+                    <h3 style="color: #6d1f1f; margin-bottom: 15px;">2. Choose Your Finish</h3>
+                    
+                    <div class="option-group">
+                        <label>Finish Type:</label>
+                        <select id="finishType">
+                            <option value="natural">Natural Wood Restoration</option>
+                            <option value="dark-stain">Dark Mahogany Stain</option>
+                            <option value="medium-stain">Medium Oak Stain</option>
+                            <option value="light-stain">Light Cherry Stain</option>
+                            <option value="paint-white">Fresh White Paint</option>
+                            <option value="paint-black">Modern Black Paint</option>
+                            <option value="paint-custom">Custom Paint Color</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label>Condition Level:</label>
+                        <select id="conditionLevel">
+                            <option value="light">Light Wear (Restoration)</option>
+                            <option value="moderate">Moderate Damage (Refinish)</option>
+                            <option value="heavy">Heavy Damage (Full Refinish)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="generate-button" id="generateButton" disabled>
+                        Generate Preview
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Result Section -->
+            <div class="result-section">
+                <h2>Your Transformed Door</h2>
+                
+                <div id="resultPlaceholder" class="result-placeholder">
+                    Upload a photo to see the magic ✨
+                </div>
+                
+                <div id="loadingState" class="loading">
+                    <div class="spinner"></div>
+                    <p><strong>Creating your preview...</strong></p>
+                    <p style="color: #999; font-size: 0.9em;">This takes about 30-60 seconds</p>
+                </div>
+                
+                <div id="comparisonView" class="comparison-view">
+                    <div>
+                        <img id="beforeImage" alt="Before">
+                        <div class="comparison-label">BEFORE</div>
+                    </div>
+                    <div>
+                        <img id="afterImage" alt="After">
+                        <div class="comparison-label">AFTER</div>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons" id="ctaButtons" style="display: none;">
+                    <button class="cta-button cta-primary" onclick="window.location.href='index.html#quote'">
+                        Get Free Quote
+                    </button>
+                    <button class="cta-button cta-secondary" onclick="window.location.href='tel:+19364448756'">
+                        Call Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const generateButton = document.getElementById('generateButton');
+        const resultPlaceholder = document.getElementById('resultPlaceholder');
+        const loadingState = document.getElementById('loadingState');
+        const comparisonView = document.getElementById('comparisonView');
+        const ctaButtons = document.getElementById('ctaButtons');
+        
+        let uploadedFile = null;
+        
+        // Upload area click
+        uploadArea.addEventListener('click', () => fileInput.click());
+        
+        // File input change
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('drag-over');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('drag-over');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleFile(file);
+            }
+        }
+        
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload an image file');
+                return;
+            }
+            
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size must be under 10MB');
+                return;
+            }
+            
+            uploadedFile = file;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = 'block';
+                generateButton.disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Generate preview
+        generateButton.addEventListener('click', async () => {
+            if (!uploadedFile) return;
+            
+            const finishType = document.getElementById('finishType').value;
+            const conditionLevel = document.getElementById('conditionLevel').value;
+            
+            // Track event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'generate_preview', {
+                    'event_category': 'engagement',
+                    'event_label': finishType
+                });
+            }
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_type: 'door_preview',
+                    content_category: finishType
+                });
+            }
+            
+            // Show loading
+            resultPlaceholder.style.display = 'none';
+            comparisonView.classList.remove('active');
+            loadingState.classList.add('active');
+            ctaButtons.style.display = 'none';
+            
+            try {
+                // TODO: Call backend API to generate preview
+                // For now, simulate with a delay
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                
+                // Mock result - show original as "after" for demo
+                const beforeImage = document.getElementById('beforeImage');
+                const afterImage = document.getElementById('afterImage');
+                
+                beforeImage.src = uploadedImage.src;
+                afterImage.src = uploadedImage.src; // TODO: Replace with AI-generated image
+                
+                loadingState.classList.remove('active');
+                comparisonView.classList.add('active');
+                ctaButtons.style.display = 'flex';
+                
+                // TODO: In production, replace this with actual API call:
+                // const response = await fetch('/api/generate-preview', {
+                //     method: 'POST',
+                //     body: formData
+                // });
+                // const result = await response.json();
+                // afterImage.src = result.previewUrl;
+                
+            } catch (error) {
+                console.error('Error generating preview:', error);
+                loadingState.classList.remove('active');
+                resultPlaceholder.style.display = 'flex';
+                resultPlaceholder.textContent = '⚠️ Error generating preview. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>

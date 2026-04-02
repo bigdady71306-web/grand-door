@@ -1,0 +1,16 @@
+{
+  "name": "grand-doors-website",
+  "version": "1.0.0",
+  "description": "Grand Doors Refinishing Website with AI Preview",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site, no build needed'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "replicate": "^0.25.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
