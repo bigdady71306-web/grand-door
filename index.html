@@ -19,13 +19,13 @@
         body { font-family: 'Georgia', serif; line-height: 1.6; color: #2c1810; background: url('images/hero-grand-doors.jpg') center/cover fixed no-repeat; }
         
         /* Navigation Menu */
-        nav { position: fixed; top: 50%; right: 30px; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 15px; }
+        nav { position: fixed; top: 50%; left: 30px; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 15px; }
         .nav-button { background: rgba(109, 31, 31, 0.95); color: #d4af37; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; border: 2px solid #d4af37; cursor: pointer; text-align: center; min-width: 200px; }
-        .nav-button:hover { background: #d4af37; color: #2c1810; transform: translateX(-5px); }
+        .nav-button:hover { background: #d4af37; color: #2c1810; transform: translateX(5px); }
         
         /* Submenu for Services */
         .nav-item { position: relative; }
-        .submenu { display: none; position: absolute; right: 220px; top: 0; background: rgba(109, 31, 31, 0.95); border-radius: 8px; min-width: 180px; border: 2px solid #d4af37; }
+        .submenu { display: none; position: absolute; left: 220px; top: 0; background: rgba(109, 31, 31, 0.95); border-radius: 8px; min-width: 180px; border: 2px solid #d4af37; }
         .nav-item:hover .submenu { display: block; }
         .submenu a { display: block; padding: 12px 20px; color: #d4af37; text-decoration: none; font-weight: bold; transition: all 0.3s; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
         .submenu a:last-child { border-bottom: none; }
@@ -80,6 +80,7 @@
 <body>
     <!-- Navigation Menu -->
     <nav>
+        <a href="#" class="nav-button" onclick="showSection('about'); return false;">About Us</a>
         <a href="#" class="nav-button" onclick="showSection('transform'); return false;">See Your Door Transformed</a>
         <a href="#" class="nav-button" onclick="showSection('portfolio'); return false;">Portfolio</a>
         <div class="nav-item">
@@ -97,6 +98,35 @@
         <div class="hero-cta">
             <p>See Your Door Transformed</p>
             <a href="preview.html" class="cta-button">Click Here</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="content-section" id="about">
+        <h2 class="section-title">About Us</h2>
+        <div style="max-width: 900px; margin: 0 auto; font-size: 1.2em; line-height: 1.8;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="color: #6d1f1f; font-size: 2em; margin-bottom: 10px;">John Garcia</h3>
+                <p style="font-style: italic; color: #5d4037;">Founder & Master Craftsman</p>
+            </div>
+            <p style="margin-bottom: 20px;">
+                It started as punishment. Growing up, whenever I got in trouble, my grandfather would send me to his workshop. 
+                "You want to act like you don't care? Fine. Go sand that door until it's smooth as glass," he'd say. 
+                I hated it at first—the sawdust, the repetitive motion, the quiet.
+            </p>
+            <p style="margin-bottom: 20px;">
+                But somewhere between those hours of sanding and staining, something changed. I began to see what he saw: 
+                the beauty hidden beneath years of wear, the satisfaction of bringing something broken back to life. 
+                Each door told a story, and I was learning to honor it.
+            </p>
+            <p style="margin-bottom: 20px;">
+                Twenty years later, what started as punishment has become my passion. Grand Doors isn't just a business—it's 
+                a tribute to my grandfather's patience and the craft he taught me. Every door we restore carries that same 
+                care and respect he showed me in his workshop.
+            </p>
+            <p style="color: #6d1f1f; font-weight: bold; text-align: center; font-size: 1.3em; margin-top: 40px;">
+                "We don't just refinish doors. We restore the beauty that was always there."
+            </p>
         </div>
     </section>
 
