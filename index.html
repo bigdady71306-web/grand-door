@@ -82,7 +82,7 @@
             .menu-toggle { background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 5px; padding: 8px 12px; font-size: 1.3em; cursor: pointer; }
             
             /* Hide desktop nav, show mobile nav */
-            nav { position: fixed; top: 0; left: -100%; width: 85%; max-width: 300px; height: 100vh; flex-direction: column; gap: 0; padding: 70px 0 20px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; transition: left 0.3s; overflow-y: auto; z-index: 999; }
+            nav { position: fixed; top: 0; left: -100%; width: 85%; max-width: 300px; height: 100vh; flex-direction: column; gap: 0; padding: 70px 0 60px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; transition: left 0.3s; overflow-y: scroll; -webkit-overflow-scrolling: touch; z-index: 999; }
             nav.open { left: 0; }
             nav.hidden { left: -100%; }
             .nav-button { width: 100%; padding: 18px 25px; font-size: 1.05em; text-align: left; border-radius: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
