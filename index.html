@@ -51,7 +51,7 @@
         .before-after .label { position: absolute; top: 10px; left: 10px; background: rgba(212, 175, 55, 0.95); color: #2c1810; padding: 6px 15px; border-radius: 5px; font-weight: bold; }
         
         /* Services Grid */
-        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 50px; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 50px; max-width: 1400px; margin-left: auto; margin-right: auto; }
         .service-card { background: rgba(109, 31, 31, 0.1); padding: 30px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center; }
         .service-card h3 { color: #6d1f1f; font-size: 2em; margin-bottom: 15px; }
         .price { font-size: 2.5em; font-weight: bold; color: #6d1f1f; margin: 15px 0; }
@@ -251,22 +251,26 @@
                 <h3>Restoration</h3>
                 <p class="price">$99</p>
                 <p>Light restoration for doors showing minor wear. We bring back the original beauty with careful attention to detail.</p>
+                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
             </div>
             <div class="service-card">
                 <h3>Refinish</h3>
                 <p class="price">$199</p>
                 <p>Complete refinishing for heavily damaged doors. Strip, sand, and apply a beautiful new finish that lasts.</p>
+                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
             </div>
             <div class="service-card">
                 <h3>Paint</h3>
                 <p class="price">$150</p>
                 <p>Professional door painting with premium paints. Transform your entryway with lasting curb appeal and protection.</p>
+                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
             </div>
             <div class="service-card" style="border: 3px solid #d4af37; background: rgba(212, 175, 55, 0.1);">
                 <h3>Executive Package</h3>
                 <p class="price">$299</p>
                 <p>Complete transformation: strip, repair, refinish, and weatherstripping. The ultimate door restoration for discerning homeowners.</p>
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #d4af37; font-weight: bold; color: #6d1f1f;">+ $49 Door Maintenance for 3 Years</p>
+                <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #d4af37; font-weight: bold; color: #6d1f1f; font-size: 0.95em;">+ $49 Door Maintenance for 3 Years</p>
+                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #d4af37; color: #2c1810; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
             </div>
         </div>
     </section>
