@@ -74,7 +74,7 @@
         
         @media (max-width: 768px) {
             /* Complete mobile redesign */
-            body { background: #2c1810; }
+            body { background: linear-gradient(to bottom, #2c1810 0%, #1a0f08 100%); background-attachment: fixed; }
             
             /* Mobile header with logo */
             .mobile-header { display: block; position: fixed; top: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); padding: 10px 15px; border-bottom: 2px solid #d4af37; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
@@ -88,10 +88,11 @@
             .nav-button { width: 100%; padding: 18px 25px; font-size: 1.05em; text-align: left; border-radius: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
             
             /* Hero section */
-            .hero { min-height: 60vh; padding: 80px 15px 30px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('images/hero-grand-doors.jpg') center/cover no-repeat; margin-bottom: 20px; }
+            .hero { min-height: calc(100vh - 70px); padding: 90px 15px 40px; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('images/hero-grand-doors.jpg') center/cover no-repeat; margin: 0; display: flex; flex-direction: column; justify-content: flex-end; position: relative; }
+            .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(transparent, #2c1810); }
             
             /* Content sections */
-            .content-section { margin: 20px 10px; padding: 30px 20px; }
+            .content-section { margin: 0; padding: 40px 20px; background: rgba(245, 240, 235, 0.98); }
             .section-title { font-size: 2.2em; }
             .portfolio-grid, .service-grid { grid-template-columns: 1fr; gap: 20px; }
             .service-grid { grid-template-columns: 1fr !important; }
