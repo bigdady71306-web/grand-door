@@ -10,13 +10,14 @@
         nav { display: flex; justify-content: center; background-color: blue; }
         nav a { color: white; padding: 15px; text-decoration: none; font-weight: bold; }
         nav a:hover { background-color: darkblue; }
-        .hero { background-color: red; height: 300px; display: flex; align-items: center; justify-content: center; color: white; }
+        .hero { display: none; }
         h1 { font-size: 36px; }
-        .portfolio-section { padding: 20px; }
-        .service-section { padding: 20px; background-color: lightgrey; }
+        .portfolio-section, .service-section { padding: 20px; }
+        .service-section { background-color: lightgrey; }
         footer { text-align: center; padding: 10px; background: black; color: white; }
         .portfolio-images { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .portfolio-images img { width: 100%; height: auto; border: 2px solid white; }
+        .header-banner { background-color: blue; color: white; padding: 50px; text-align: center; }
     </style>
 </head>
 <body>
@@ -30,8 +31,9 @@
         <a href="#about">About Us</a>
         <a href="#contact">Contact</a>
     </nav>
-    <div class="hero">
-        <h2>Your Beautiful Door Awaits!</h2>
+    <div class="header-banner">
+        <h2>Welcome to Grand Doors Refinishing</h2>
+        <p>Your trusted partner for quality door services.</p>
     </div>
     <div class="portfolio-section" id="portfolio">
         <h3>Our Portfolio</h3>
