@@ -19,7 +19,8 @@
         body { font-family: 'Georgia', serif; line-height: 1.6; color: #2c1810; background: url('images/hero-grand-doors.jpg') center/cover fixed no-repeat; }
         
         /* Navigation Menu */
-        nav { position: fixed; top: 50%; right: 30px; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 15px; }
+        nav { position: fixed; top: 50%; right: 30px; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 15px; transition: all 0.3s; }
+        nav.hidden { right: -250px; }
         .nav-button { background: rgba(109, 31, 31, 0.95); color: #d4af37; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; border: 2px solid #d4af37; cursor: pointer; text-align: center; min-width: 200px; display: block; box-sizing: border-box; }
         .nav-button:hover { background: #d4af37; color: #2c1810; transform: translateX(-5px); }
         
@@ -270,6 +271,8 @@
             if (sectionId !== 'transform') {
                 document.getElementById(sectionId).classList.add('active');
                 document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+                // Hide navigation
+                document.querySelector('nav').classList.add('hidden');
             } else {
                 // Redirect to preview page
                 window.location.href = 'preview.html';
@@ -281,6 +284,8 @@
                 section.classList.remove('active');
             });
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Show navigation
+            document.querySelector('nav').classList.remove('hidden');
         }
         
         function submitAppointment() {
