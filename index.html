@@ -70,13 +70,14 @@
         .scheduler button:hover { background: #8b2828; transform: translateY(-2px); }
         
         @media (max-width: 768px) {
-            /* Mobile: hamburger menu */
-            nav { position: fixed; bottom: 0; left: 0; right: 0; top: auto; transform: none; flex-direction: row; flex-wrap: wrap; gap: 8px; padding: 15px 10px; background: rgba(0, 0, 0, 0.95); justify-content: center; max-height: 200px; overflow-y: auto; border-top: 2px solid #d4af37; }
-            .nav-button { min-width: 140px; padding: 12px 15px; font-size: 0.85em; }
-            .hero { min-height: 100vh; padding-bottom: 220px; }
+            /* Mobile: top bar */
+            nav { position: fixed; top: 0; left: 0; right: 0; bottom: auto; transform: none; flex-direction: row; overflow-x: auto; overflow-y: hidden; gap: 10px; padding: 12px; background: rgba(0, 0, 0, 0.95); border-bottom: 2px solid #d4af37; white-space: nowrap; }
+            .nav-button { min-width: auto; padding: 10px 15px; font-size: 0.85em; flex-shrink: 0; }
+            .hero { padding-top: 80px; }
+            .content-section { margin-top: 70px; }
             .portfolio-grid, .service-grid { grid-template-columns: 1fr; }
             .service-grid { grid-template-columns: 1fr !important; }
-            .back-to-home { top: 10px; left: 10px; padding: 8px 15px; font-size: 0.9em; z-index: 2000; }
+            .back-to-home { top: 60px; left: 10px; padding: 8px 15px; font-size: 0.9em; z-index: 2000; }
         }
     </style>
 </head>
