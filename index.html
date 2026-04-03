@@ -249,26 +249,26 @@
         <button class="back-to-home" onclick="hideAllSections()">← Back</button>
         <h2 class="section-title">Request a Quote</h2>
         <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 50px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
-            <form id="quoteForm">
+            <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                     <div>
                         <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Your Name *</label>
-                        <input type="text" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                        <input type="text" name="name" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Phone Number *</label>
-                        <input type="tel" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                        <input type="tel" name="phone" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
                     </div>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
                     <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Email Address *</label>
-                    <input type="email" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                    <input type="email" name="email" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
                 </div>
                 
                 <div style="margin-bottom: 20px;">
                     <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Service Needed *</label>
-                    <select required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                    <select name="service" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
                         <option value="">Select a service...</option>
                         <option value="restoration">Door Restoration - $99</option>
                         <option value="refinish">Door Refinish - $199</option>
@@ -285,14 +285,14 @@
                 
                 <div style="margin-bottom: 20px;">
                     <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Project Details</label>
-                    <textarea style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; min-height: 120px; resize: vertical;" placeholder="Tell us about your project..."></textarea>
+                    <textarea name="message" style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; min-height: 120px; resize: vertical;" placeholder="Tell us about your project..."></textarea>
                 </div>
                 
                 <div style="border: 2px dashed #d4af37; padding: 30px; text-align: center; border-radius: 8px; background: #f5f0eb; margin-bottom: 20px;">
                     <label style="cursor: pointer; color: #6d1f1f; font-weight: bold; font-size: 1.1em;">
                         📸 Upload Photos of Your Door/Project<br>
                         <small style="color: #999; font-weight: normal;">Click to select files (JPG, PNG up to 10MB each)</small>
-                        <input type="file" accept="image/*" multiple style="display: none;" onchange="showFileNames(this)">
+                        <input type="file" name="photos" accept="image/*" multiple style="display: none;" onchange="showFileNames(this)">
                     </label>
                     <div id="fileNames" style="margin-top: 10px; font-size: 0.9em; color: #5d4037;"></div>
                 </div>
