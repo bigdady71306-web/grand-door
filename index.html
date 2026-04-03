@@ -181,9 +181,49 @@
                 </p>
             </div>
 
-            <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 25px; text-align: center;">Compare and Save</h3>
+            <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 25px; text-align: center;">Compare Our Competitors</h3>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px;">
+            <!-- Comparison Table -->
+            <div style="overflow-x: auto; margin-bottom: 40px;">
+                <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden;">
+                    <thead>
+                        <tr style="background: #6d1f1f; color: #f5f0eb;">
+                            <th style="padding: 20px; text-align: left; font-size: 1.2em; border-right: 2px solid #d4af37;">Service</th>
+                            <th style="padding: 20px; text-align: center; font-size: 1.2em; border-right: 2px solid #d4af37;">Rick's Front Door</th>
+                            <th style="padding: 20px; text-align: center; font-size: 1.2em; border-right: 2px solid #d4af37;">Lone Star Door</th>
+                            <th style="padding: 20px; text-align: center; font-size: 1.2em; background: #d4af37; color: #2c1810;">Grand Doors</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 2px solid #f0f0f0;">
+                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Light Restoration</td>
+                            <td style="padding: 20px; text-align: center; color: #999;">Not Offered</td>
+                            <td style="padding: 20px; text-align: center; color: #999;">Not Offered</td>
+                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.1);"><strong style="font-size: 1.5em; color: #6d1f1f;">$99</strong><br><span style="color: #d4af37; font-weight: bold;">✓ Exclusive!</span></td>
+                        </tr>
+                        <tr style="border-bottom: 2px solid #f0f0f0;">
+                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Full Refinishing</td>
+                            <td style="padding: 20px; text-align: center;"><span style="font-size: 1.3em; color: #666;">$375</span></td>
+                            <td style="padding: 20px; text-align: center; color: #999; font-style: italic;">Call for Quote</td>
+                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.1);"><strong style="font-size: 1.5em; color: #6d1f1f;">$199</strong><br><span style="color: #d4af37; font-weight: bold;">✓ Save $176</span></td>
+                        </tr>
+                        <tr style="border-bottom: 2px solid #f0f0f0;">
+                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Door Paint Service</td>
+                            <td style="padding: 20px; text-align: center; color: #999;">Not Listed</td>
+                            <td style="padding: 20px; text-align: center; color: #999; font-style: italic;">Call for Quote</td>
+                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.1);"><strong style="font-size: 1.5em; color: #6d1f1f;">$150</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Executive Package<br><span style="font-size: 0.9em; font-weight: normal; color: #666;">(Complete + Weatherstripping + Coating)</span></td>
+                            <td style="padding: 20px; text-align: center;"><span style="font-size: 1.3em; color: #666;">$425+</span><br><span style="font-size: 0.9em; color: #999;">($375 + $50 armor coat)</span></td>
+                            <td style="padding: 20px; text-align: center; color: #999; font-style: italic;">Call for Quote</td>
+                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.2); border: 3px solid #d4af37;"><strong style="font-size: 1.8em; color: #6d1f1f;">$299</strong><br><span style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Save $126+</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px; display: none;">
                 <div style="background: white; padding: 25px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center;">
                     <h4 style="color: #6d1f1f; font-size: 1.4em; margin-bottom: 15px;">Light Restoration</h4>
                     <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;"><strike>Competitors: Not Offered</strike></p>
