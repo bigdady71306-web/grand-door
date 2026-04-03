@@ -6,7 +6,11 @@
     <title>AI Door Preview - Grand Doors</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Georgia', serif; background: #f5f0eb; color: #2c1810; }
+        body { font-family: 'Georgia', serif; background: rgba(210, 180, 140, 1); color: #2c1810; }
+        
+        /* Back Button */
+        .back-button { position: fixed; top: 20px; left: 20px; background: #6d1f1f; color: #d4af37; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 2px solid #d4af37; transition: all 0.3s; z-index: 1000; }
+        .back-button:hover { background: #d4af37; color: #2c1810; }
         
         .preview-container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
         .preview-header { text-align: center; margin-bottom: 50px; }
@@ -58,11 +62,21 @@
         .comparison-label { text-align: center; font-weight: bold; font-size: 1.2em; margin-top: 10px; color: #6d1f1f; }
         
         .cta-buttons { display: flex; gap: 20px; margin-top: 30px; }
-        .cta-button { flex: 1; padding: 15px; font-size: 1.1em; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; text-transform: uppercase; }
+        .cta-button { flex: 1; padding: 15px; font-size: 1.1em; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; text-transform: uppercase; text-decoration: none; text-align: center; }
         .cta-primary { background: #d4af37; color: #2c1810; }
         .cta-primary:hover { background: #b8941f; }
         .cta-secondary { background: #6d1f1f; color: #f5f0eb; }
         .cta-secondary:hover { background: #8b2828; }
+        
+        /* Book Services Dropdown */
+        .book-services { position: relative; margin-top: 30px; text-align: center; }
+        .book-button { background: #d4af37; color: #2c1810; padding: 20px 40px; font-size: 1.3em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; }
+        .book-button:hover { background: #b8941f; }
+        .services-dropdown { display: none; background: #fff; border: 2px solid #d4af37; border-radius: 8px; margin-top: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .services-dropdown.active { display: block; }
+        .services-dropdown a { display: block; padding: 15px 20px; color: #6d1f1f; text-decoration: none; font-weight: bold; transition: all 0.3s; border-bottom: 1px solid #f5f0eb; }
+        .services-dropdown a:last-child { border-bottom: none; }
+        .services-dropdown a:hover { background: #f5f0eb; color: #d4af37; }
         
         @media (max-width: 768px) {
             .preview-grid { grid-template-columns: 1fr; }
@@ -71,6 +85,7 @@
     </style>
 </head>
 <body>
+    <a href="index.html" class="back-button">← Back</a>
     <div class="preview-container">
         <div class="preview-header">
             <h1>✨ See Your Door Transformed</h1>
@@ -151,12 +166,23 @@
                 </div>
                 
                 <div class="cta-buttons" id="ctaButtons" style="display: none;">
-                    <button class="cta-button cta-primary" onclick="window.location.href='index.html#quote'">
-                        Get Free Quote
+                    <a href="tel:+19364448756" class="cta-button cta-secondary">
+                        Call Now: (936) 444-8756
+                    </a>
+                </div>
+                
+                <div class="book-services" id="bookServices" style="display: none;">
+                    <button class="book-button" onclick="toggleServices()">
+                        Book Services ▼
                     </button>
-                    <button class="cta-button cta-secondary" onclick="window.location.href='tel:+19364448756'">
-                        Call Now
-                    </button>
+                    <div class="services-dropdown" id="servicesDropdown">
+                        <a href="tel:+19364448756">Restoration - $99</a>
+                        <a href="tel:+19364448756">Refinish - $199</a>
+                        <a href="tel:+19364448756">Paint - $150</a>
+                        <a href="tel:+19364448756">Weatherstripping - Single Door - $125</a>
+                        <a href="tel:+19364448756">Weatherstripping - Double Door - $135</a>
+                        <a href="tel:+19364448756">Bottom Sweeps - $35</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -228,6 +254,11 @@
             reader.readAsDataURL(file);
         }
         
+        function toggleServices() {
+            const dropdown = document.getElementById('servicesDropdown');
+            dropdown.classList.toggle('active');
+        }
+        
         // Generate preview
         generateButton.addEventListener('click', async () => {
             if (!uploadedFile) return;
@@ -270,6 +301,7 @@
                 loadingState.classList.remove('active');
                 comparisonView.classList.add('active');
                 ctaButtons.style.display = 'flex';
+                document.getElementById('bookServices').style.display = 'block';
                 
                 // TODO: In production, replace this with actual API call:
                 // const response = await fetch('/api/generate-preview', {
