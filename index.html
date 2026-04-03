@@ -10,12 +10,13 @@
         nav { display: flex; justify-content: center; background-color: blue; }
         nav a { color: white; padding: 15px; text-decoration: none; font-weight: bold; }
         nav a:hover { background-color: darkblue; }
-        .hero { display: none; }
+        .hero { display: flex; background-image: url('images/hero-image.jpg'); height: 300px; align-items: center; justify-content: center; color: white; }
         h1 { font-size: 36px; }
         .portfolio-section, .service-section { padding: 20px; }
         .service-section { background-color: lightgrey; }
         footer { text-align: center; padding: 10px; background: black; color: white; }
-        .header-banner {background-color: white; color: black; padding: 50px; text-align: center;}
+        .portfolio-images { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+        .portfolio-images img { width: 100%; height: auto; border: 2px solid white; }
     </style>
 </head>
 <body>
@@ -29,10 +30,8 @@
         <a href="#about">About Us</a>
         <a href="#contact">Contact</a>
     </nav>
-    <div class="header-banner">
-        <h1>GRAND DOORS</h1>
-        <p>Refinishing Beautiful Wood Doors</p>
-        <p>Restoring Beauty One Door at a Time</p>
+    <div class="hero">
+        <h2>Your Beautiful Door Awaits!</h2>
     </div>
     <div class="portfolio-section" id="portfolio">
         <h3>Our Portfolio</h3>
