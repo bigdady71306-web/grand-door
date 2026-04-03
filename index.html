@@ -70,8 +70,13 @@
         .scheduler button:hover { background: #8b2828; transform: translateY(-2px); }
         
         @media (max-width: 768px) {
-            nav { position: static; transform: none; flex-direction: row; flex-wrap: wrap; padding: 10px; }
+            /* Mobile: hamburger menu */
+            nav { position: fixed; bottom: 0; left: 0; right: 0; top: auto; transform: none; flex-direction: row; flex-wrap: wrap; gap: 8px; padding: 15px 10px; background: rgba(0, 0, 0, 0.95); justify-content: center; max-height: 200px; overflow-y: auto; border-top: 2px solid #d4af37; }
+            .nav-button { min-width: 140px; padding: 12px 15px; font-size: 0.85em; }
+            .hero { min-height: 100vh; padding-bottom: 220px; }
             .portfolio-grid, .service-grid { grid-template-columns: 1fr; }
+            .service-grid { grid-template-columns: 1fr !important; }
+            .back-to-home { top: 10px; left: 10px; padding: 8px 15px; font-size: 0.9em; z-index: 2000; }
         }
     </style>
 </head>
