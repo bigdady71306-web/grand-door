@@ -24,13 +24,7 @@
         .nav-button { background: rgba(109, 31, 31, 0.95); color: #d4af37; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; border: 2px solid #d4af37; cursor: pointer; text-align: center; min-width: 200px; display: block; box-sizing: border-box; }
         .nav-button:hover { background: #d4af37; color: #2c1810; transform: translateX(-5px); }
         
-        /* Submenu for Services */
-        .nav-item { position: relative; }
-        .submenu { display: none; position: absolute; right: 220px; top: 0; background: rgba(109, 31, 31, 0.95); border-radius: 8px; min-width: 180px; border: 2px solid #d4af37; }
-        .nav-item:hover .submenu { display: block; }
-        .submenu a { display: block; padding: 12px 20px; color: #d4af37; text-decoration: none; font-weight: bold; transition: all 0.3s; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
-        .submenu a:last-child { border-bottom: none; }
-        .submenu a:hover { background: #d4af37; color: #2c1810; }
+
         
         /* Hero Section */
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -87,13 +81,8 @@
         <a href="#" class="nav-button" onclick="showSection('about'); return false;">About Us</a>
         <a href="#" class="nav-button" onclick="showSection('transform'); return false;">See Your Door Transformed</a>
         <a href="#" class="nav-button" onclick="showSection('portfolio'); return false;">Portfolio</a>
-        <div class="nav-item">
-            <a href="#" class="nav-button">Our Services ▼</a>
-            <div class="submenu">
-                <a href="#" onclick="showSection('doors'); return false;">Doors</a>
-                <a href="#" onclick="showSection('weatherstripping'); return false;">Weatherstripping</a>
-            </div>
-        </div>
+        <a href="#" class="nav-button" onclick="showSection('doors'); return false;">Doors</a>
+        <a href="#" class="nav-button" onclick="showSection('weatherstripping'); return false;">Weatherstripping</a>
         <a href="#" class="nav-button" onclick="showSection('contact'); return false;">Contact Now</a>
     </nav>
 
