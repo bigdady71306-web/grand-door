@@ -451,6 +451,10 @@
             const body = document.body;
             nav.classList.toggle('open');
             body.classList.toggle('menu-open');
+            // Scroll menu to top when opening
+            if (nav.classList.contains('open')) {
+                nav.scrollTop = 0;
+            }
         }
         
         // Close menu when clicking a link
