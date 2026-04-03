@@ -81,12 +81,12 @@
             .mobile-logo { height: 50px; width: auto; }
             .menu-toggle { background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 5px; padding: 8px 12px; font-size: 1.3em; cursor: pointer; }
             
-            /* Mobile nav - simple and small buttons */
-            nav { position: fixed; top: 70px; bottom: 0; left: -100%; width: 280px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; transition: left 0.3s; z-index: 999; overflow: hidden; display: flex; flex-direction: column; }
+            /* Mobile nav - TINY buttons to fit all on screen */
+            nav { position: fixed; top: 70px; bottom: 0; left: -100%; width: 260px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; transition: left 0.3s; z-index: 999; overflow: hidden; display: flex; flex-direction: column; }
             nav.open { left: 0; }
             nav.hidden { left: -100%; }
-            .nav-scroll-wrapper { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; min-height: 0; }
-            .nav-button { display: block; width: 100%; padding: 15px 20px; font-size: 0.9em; text-align: left; border: none; border-radius: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); background: transparent; color: #f5f0eb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .nav-scroll-wrapper { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; min-height: 0; padding: 10px 0; }
+            .nav-button { display: block; width: 100%; padding: 10px 15px; font-size: 0.85em; line-height: 1.3; text-align: left; border: none; border-radius: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.2); background: transparent; color: #f5f0eb; }
             body.menu-open { overflow: hidden; position: fixed; width: 100%; }
             
             /* Hero section */
