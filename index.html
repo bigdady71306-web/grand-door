@@ -117,6 +117,7 @@
     <nav>
         <div class="nav-scroll-wrapper">
             <a href="#" class="nav-button" onclick="showSection('about'); return false;">About Us</a>
+            <a href="#" class="nav-button" onclick="showSection('whychoose'); return false;">Why Choose Us</a>
             <a href="#" class="nav-button" onclick="showSection('transform'); return false;">See Your Door Transformed</a>
             <a href="#" class="nav-button" onclick="showSection('portfolio'); return false;">Portfolio</a>
             <a href="#" class="nav-button" onclick="showSection('reviews'); return false;">Reviews</a>
@@ -159,6 +160,63 @@
             <p style="color: #6d1f1f; font-weight: bold; text-align: center; font-size: 1.3em; margin-top: 40px;">
                 "We don't just refinish doors. We restore the beauty that was always there."
             </p>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="content-section" id="whychoose" style="background: rgba(245, 240, 235, 0.98);">
+        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title" style="color: #6d1f1f;">Why Houston Chooses Grand Doors</h2>
+        <p class="section-subtitle" style="color: #5d4037; font-size: 1.2em; max-width: 800px; margin: 0 auto 40px;">Professional quality, honest pricing, and options our competitors don't offer</p>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div style="background: rgba(212, 175, 55, 0.1); border: 2px solid #d4af37; border-radius: 15px; padding: 30px; margin-bottom: 40px;">
+                <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 20px; text-align: center;">🏆 Our Exclusive $99 Restoration Service</h3>
+                <p style="font-size: 1.15em; line-height: 1.7; margin-bottom: 15px;">
+                    We noticed something missing in Houston's door refinishing market: <strong>affordable options for homeowners who don't need a full refinish.</strong>
+                </p>
+                <p style="font-size: 1.15em; line-height: 1.7; margin-bottom: 15px;">
+                    While our competitors start at $375 for full refinishing, we offer professional services at every price point. 
+                    Our $99 Restoration is perfect for doors with minor wear that just need expert attention—<strong>a service neither Rick's Front Door nor Lone Star Door offers.</strong>
+                </p>
+            </div>
+
+            <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 25px; text-align: center;">Compare and Save</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px;">
+                <div style="background: white; padding: 25px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center;">
+                    <h4 style="color: #6d1f1f; font-size: 1.4em; margin-bottom: 15px;">Light Restoration</h4>
+                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;"><strike>Competitors: Not Offered</strike></p>
+                    <p style="font-size: 2em; color: #6d1f1f; font-weight: bold; margin-bottom: 10px;">$99</p>
+                    <p style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Exclusive to Grand Doors!</p>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center;">
+                    <h4 style="color: #6d1f1f; font-size: 1.4em; margin-bottom: 15px;">Full Refinish</h4>
+                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;">Rick's: $375</p>
+                    <p style="font-size: 2em; color: #6d1f1f; font-weight: bold; margin-bottom: 10px;">$199</p>
+                    <p style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Save $176!</p>
+                </div>
+                
+                <div style="background: rgba(212, 175, 55, 0.1); padding: 25px; border-radius: 10px; border: 3px solid #d4af37; text-align: center;">
+                    <h4 style="color: #6d1f1f; font-size: 1.4em; margin-bottom: 15px;">Executive Package</h4>
+                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;">Rick's: $425+</p>
+                    <p style="font-size: 2em; color: #6d1f1f; font-weight: bold; margin-bottom: 10px;">$299</p>
+                    <p style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Save $126+ & Get More!</p>
+                </div>
+            </div>
+
+            <div style="background: #6d1f1f; color: #f5f0eb; padding: 35px; border-radius: 15px; text-align: center;">
+                <h3 style="font-size: 1.8em; margin-bottom: 20px; color: #d4af37;">The Grand Doors Difference</h3>
+                <ul style="list-style: none; padding: 0; font-size: 1.15em; line-height: 2; text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li>✓ <strong>Transparent Pricing</strong> - No hidden costs or surprise fees</li>
+                    <li>✓ <strong>Options for Every Budget</strong> - From $99 restoration to $299 complete transformation</li>
+                    <li>✓ <strong>Exclusive Services</strong> - Light restoration option competitors don't offer</li>
+                    <li>✓ <strong>20+ Years Experience</strong> - Master craftsmanship on every door</li>
+                    <li>✓ <strong>Best Value in Houston</strong> - Premium quality without premium prices</li>
+                </ul>
+                <button onclick="showSection('contact')" style="margin-top: 30px; padding: 18px 40px; background: #d4af37; color: #2c1810; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1.2em;">Get Your Free Quote</button>
+            </div>
         </div>
     </section>
 
