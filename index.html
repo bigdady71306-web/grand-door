@@ -76,13 +76,14 @@
             /* Complete mobile redesign */
             body { background: linear-gradient(to bottom, #2c1810 0%, #1a0f08 100%); background-attachment: fixed; }
             
+            /* FORCE HIDE desktop nav */
+            nav { display: none !important; }
+            nav.open { display: flex !important; position: fixed; top: 70px; bottom: 0; left: 0; width: 260px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; z-index: 999; overflow: hidden; flex-direction: column; }
+            
             /* Mobile header with logo */
-            .mobile-header { display: block; position: fixed; top: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); padding: 10px 15px; border-bottom: 2px solid #d4af37; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+            .mobile-header { display: flex !important; position: fixed; top: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); padding: 10px 15px; border-bottom: 2px solid #d4af37; z-index: 1000; justify-content: space-between; align-items: center; }
             .mobile-logo { height: 50px; width: auto; }
             .menu-toggle { background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 5px; padding: 8px 12px; font-size: 1.3em; cursor: pointer; }
-            
-            /* Mobile nav - TINY buttons to fit all on screen */
-            nav { position: fixed; top: 70px; bottom: 0; left: -100%; width: 260px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; transition: left 0.3s; z-index: 999; overflow: hidden; display: flex; flex-direction: column; }
             nav.open { left: 0; }
             nav.hidden { left: -100%; }
             .nav-scroll-wrapper { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; min-height: 0; padding: 10px 0; }
