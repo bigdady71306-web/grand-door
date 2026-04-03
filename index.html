@@ -81,11 +81,12 @@
             .mobile-logo { height: 50px; width: auto; }
             .menu-toggle { background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 5px; padding: 8px 12px; font-size: 1.3em; cursor: pointer; }
             
-            /* Hide desktop nav, show mobile nav - FIX BOUNCE */
-            nav { position: fixed; top: 70px; bottom: 0; left: -100%; width: 280px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; transition: left 0.3s; z-index: 999; overflow-y: scroll; -webkit-overflow-scrolling: touch; padding: 20px 0 100px 0; }
-            nav.open { left: 0; overflow-y: scroll; }
+            /* Mobile nav with wrapper for scrolling */
+            nav { position: fixed; top: 70px; bottom: 0; left: -100%; width: 280px; background: rgba(109, 31, 31, 0.98); border-right: 3px solid #d4af37; transition: left 0.3s; z-index: 999; overflow: hidden; }
+            nav.open { left: 0; }
             nav.hidden { left: -100%; }
-            .nav-button { display: block; width: 100%; padding: 22px 25px; font-size: 0.95em; text-align: left; border: none; border-radius: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); min-height: auto; }
+            .nav-scroll-wrapper { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 20px 0 60px 0; }
+            .nav-button { display: block; width: 100%; padding: 18px 25px; font-size: 1em; text-align: left; border: none; border-radius: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3); background: transparent; color: #f5f0eb; }
             body.menu-open { overflow: hidden; position: fixed; width: 100%; }
             
             /* Hero section */
@@ -114,15 +115,17 @@
     
     <!-- Navigation Menu -->
     <nav>
-        <a href="#" class="nav-button" onclick="showSection('about'); return false;">About Us</a>
-        <a href="#" class="nav-button" onclick="showSection('transform'); return false;">See Your Door Transformed</a>
-        <a href="#" class="nav-button" onclick="showSection('portfolio'); return false;">Portfolio</a>
-        <a href="#" class="nav-button" onclick="showSection('reviews'); return false;">Reviews</a>
-        <a href="#" class="nav-button" onclick="showSection('doors'); return false;">Doors</a>
-        <a href="#" class="nav-button" onclick="showSection('weatherstripping'); return false;">Weatherstripping</a>
-        <a href="#" class="nav-button" onclick="showSection('other'); return false;">Other Services</a>
-        <a href="#" class="nav-button" onclick="showSection('quote'); return false;">Request Quote</a>
-        <a href="#" class="nav-button" onclick="showSection('contact'); return false;">Contact Now</a>
+        <div class="nav-scroll-wrapper">
+            <a href="#" class="nav-button" onclick="showSection('about'); return false;">About Us</a>
+            <a href="#" class="nav-button" onclick="showSection('transform'); return false;">See Your Door Transformed</a>
+            <a href="#" class="nav-button" onclick="showSection('portfolio'); return false;">Portfolio</a>
+            <a href="#" class="nav-button" onclick="showSection('reviews'); return false;">Reviews</a>
+            <a href="#" class="nav-button" onclick="showSection('doors'); return false;">Doors</a>
+            <a href="#" class="nav-button" onclick="showSection('weatherstripping'); return false;">Weatherstripping</a>
+            <a href="#" class="nav-button" onclick="showSection('other'); return false;">Other Services</a>
+            <a href="#" class="nav-button" onclick="showSection('quote'); return false;">Request Quote</a>
+            <a href="#" class="nav-button" onclick="showSection('contact'); return false;">Contact Now</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -448,12 +451,13 @@
         
         function toggleMenu() {
             const nav = document.querySelector('nav');
+            const wrapper = document.querySelector('.nav-scroll-wrapper');
             const body = document.body;
             nav.classList.toggle('open');
             body.classList.toggle('menu-open');
             // Scroll menu to top when opening
-            if (nav.classList.contains('open')) {
-                nav.scrollTop = 0;
+            if (nav.classList.contains('open') && wrapper) {
+                wrapper.scrollTop = 0;
             }
         }
         
