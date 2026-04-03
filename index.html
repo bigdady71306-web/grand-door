@@ -69,20 +69,28 @@
         .scheduler button { width: 100%; padding: 20px; background: #6d1f1f; color: #f5f0eb; font-size: 1.3em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
         .scheduler button:hover { background: #8b2828; transform: translateY(-2px); }
         
+        /* Hamburger Menu */
+        .menu-toggle { display: none; position: fixed; top: 15px; right: 15px; z-index: 2000; background: rgba(109, 31, 31, 0.95); color: #d4af37; border: 2px solid #d4af37; border-radius: 8px; padding: 10px 15px; font-size: 1.5em; cursor: pointer; font-weight: bold; }
+        
         @media (max-width: 768px) {
-            /* Mobile: top bar */
-            body { background-size: contain; background-repeat: no-repeat; background-position: top center; background-color: #2c1810; }
-            nav { position: fixed; top: 0; left: 0; right: 0; bottom: auto; transform: none; flex-direction: column; overflow-x: visible; overflow-y: auto; gap: 8px; padding: 10px; background: rgba(0, 0, 0, 0.95); border-bottom: 2px solid #d4af37; max-height: 50vh; }
-            .nav-button { width: 100%; padding: 12px 15px; font-size: 0.9em; text-align: center; }
-            .hero { padding-top: 60px; min-height: 100vh; }
+            /* Mobile: hamburger menu */
+            body { background-size: cover; background-position: center; }
+            .menu-toggle { display: block; }
+            nav { position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh; flex-direction: column; gap: 0; padding: 60px 0 20px; background: rgba(0, 0, 0, 0.98); border-left: 2px solid #d4af37; transition: right 0.3s; overflow-y: auto; }
+            nav.open { right: 0; }
+            .nav-button { width: 100%; padding: 18px 20px; font-size: 1em; text-align: left; border-radius: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+            .hero { min-height: 100vh; padding-top: 0; }
             .content-section { margin-top: 20px; }
             .portfolio-grid, .service-grid { grid-template-columns: 1fr; }
             .service-grid { grid-template-columns: 1fr !important; }
-            .back-to-home { top: 10px; left: 10px; padding: 8px 15px; font-size: 0.9em; z-index: 2000; }
+            .back-to-home { top: 15px; left: 15px; padding: 8px 15px; font-size: 0.9em; z-index: 1500; }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    
     <!-- Navigation Menu -->
     <nav>
         <a href="#" class="nav-button" onclick="showSection('about'); return false;">About Us</a>
@@ -368,6 +376,22 @@
             // Show navigation
             document.querySelector('nav').classList.remove('hidden');
         }
+        
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('open');
+        }
+        
+        // Close menu when clicking a link
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('nav').classList.remove('open');
+                    }
+                });
+            });
+        });
         
         function submitAppointment() {
             // Track event
