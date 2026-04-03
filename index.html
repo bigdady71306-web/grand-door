@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="styles.css">
     <title>Grand Doors Refinishing</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; }
-        header { background-color: black; color: white; padding: 20px; text-align: center; }
-        .hero { background-color: red; height: 300px; display: flex; align-items: center; justify-content: center; }
+        body { font-family: Arial, sans-serif; margin: 0; color: black; }
+        header { background-color: black; color: white; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: center; background-color: blue; }
+        nav a { color: white; padding: 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { background-color: darkblue; }
+        .hero { background-color: red; height: 300px; display: flex; align-items: center; justify-content: center; color: white; }
         h1 { font-size: 36px; }
         .portfolio-section { padding: 20px; }
         .service-section { padding: 20px; background-color: lightgrey; }
@@ -17,16 +20,23 @@
 </head>
 <body>
     <header>
+        <img src="images/logo-new.jpg" alt="Grand Doors Logo" style="height: 50px;">
         <h1>Grand Doors Refinishing</h1>
     </header>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
     <div class="hero">
         <h2>Your Beautiful Door Awaits!</h2>
     </div>
-    <div class="portfolio-section">
+    <div class="portfolio-section" id="portfolio">
         <h3>Our Portfolio</h3>
         <p>Gallery of our work will appear here.</p>
     </div>
-    <div class="service-section">
+    <div class="service-section" id="services">
         <h3>Our Services</h3>
         <ul>
             <li>Restoration - $99</li>
@@ -34,9 +44,15 @@
             <li>Paint - $150</li>
             <li>Executive Package - $299</li>
         </ul>
+        <button onclick="showContact()">Book Now</button>
     </div>
     <footer>
         <p>Contact us: info@granddoors.com | Call us: 832-387-7891</p>
     </footer>
+    <script>
+        function showContact() {
+            alert('Contact us to book your service!');
+        }
+    </script>
 </body>
 </html>
