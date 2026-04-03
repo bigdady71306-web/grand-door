@@ -39,8 +39,10 @@
         .cta-button:hover { background: #b8941f; transform: translateY(-3px); }
         
         /* Content Sections */
-        .content-section { background: rgba(245, 240, 235, 0.98); padding: 80px 40px; margin: 40px auto; max-width: 1400px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; }
+        .content-section { background: rgba(245, 240, 235, 0.98); padding: 80px 40px; margin: 40px auto; max-width: 1400px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; position: relative; }
         #about { background: rgba(210, 180, 140, 0.98); }
+        .back-to-home { position: absolute; top: 20px; left: 20px; background: #6d1f1f; color: #d4af37; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 2px solid #d4af37; transition: all 0.3s; cursor: pointer; }
+        .back-to-home:hover { background: #d4af37; color: #2c1810; }
         .content-section.active { display: block; }
         .section-title { font-size: 3em; color: #6d1f1f; margin-bottom: 40px; text-align: center; }
         
@@ -100,6 +102,7 @@
 
     <!-- About Us Section -->
     <section class="content-section" id="about">
+        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
         <h2 class="section-title">About Us</h2>
         <div style="max-width: 900px; margin: 0 auto; font-size: 1.2em; line-height: 1.8;">
             <div style="text-align: center; margin-bottom: 30px;">
@@ -129,6 +132,7 @@
 
     <!-- Portfolio Section -->
     <section class="content-section" id="portfolio">
+        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
         <h2 class="section-title">Portfolio</h2>
         <div class="portfolio-grid">
             <div class="portfolio-item">
@@ -175,6 +179,7 @@
 
     <!-- Doors Services Section -->
     <section class="content-section" id="doors">
+        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
         <h2 class="section-title">Door Services</h2>
         <div class="service-grid">
             <div class="service-card">
@@ -197,6 +202,7 @@
 
     <!-- Weatherstripping Services Section -->
     <section class="content-section" id="weatherstripping">
+        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
         <h2 class="section-title">Weatherstripping Services</h2>
         <div class="service-grid">
             <div class="service-card">
@@ -219,6 +225,7 @@
 
     <!-- Contact Section -->
     <section class="content-section" id="contact">
+        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
         <h2 class="section-title">Contact Us</h2>
         <div class="contact-info">
             <p>Serving Conroe, The Woodlands, and surrounding communities</p>
@@ -261,6 +268,13 @@
                 // Redirect to preview page
                 window.location.href = 'preview.html';
             }
+        }
+        
+        function hideAllSections() {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         function submitAppointment() {
