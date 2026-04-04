@@ -295,30 +295,35 @@
             ctaButtons.style.display = 'none';
             
             try {
-                // TODO: Call backend API to generate preview
-                // For now, simulate with a delay
-                await new Promise(resolve => setTimeout(resolve, 3000));
-                
-                // Mock result - show original as "after" for demo
+                const finishType = document.getElementById('finishType').value;
+
+                // Convert uploaded image to base64
+                const canvas = document.createElement('canvas');
+                canvas.width = uploadedImage.naturalWidth;
+                canvas.height = uploadedImage.naturalHeight;
+                canvas.getContext('2d').drawImage(uploadedImage, 0, 0);
+                const imageBase64 = canvas.toDataURL('image/jpeg', 0.8);
+
+                const response = await fetch('/api/generate-preview', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ imageData: imageBase64, finishType })
+                });
+
+                const result = await response.json();
+
+                if (!result.success) throw new Error(result.error || 'Generation failed');
+
                 const beforeImage = document.getElementById('beforeImage');
                 const afterImage = document.getElementById('afterImage');
-                
                 beforeImage.src = uploadedImage.src;
-                afterImage.src = uploadedImage.src; // TODO: Replace with AI-generated image
-                
+                afterImage.src = result.previewUrl;
+
                 loadingState.classList.remove('active');
                 comparisonView.classList.add('active');
                 ctaButtons.style.display = 'flex';
                 document.getElementById('bookServices').style.display = 'block';
-                
-                // TODO: In production, replace this with actual API call:
-                // const response = await fetch('/api/generate-preview', {
-                //     method: 'POST',
-                //     body: formData
-                // });
-                // const result = await response.json();
-                // afterImage.src = result.previewUrl;
-                
+
             } catch (error) {
                 console.error('Error generating preview:', error);
                 loadingState.classList.remove('active');
