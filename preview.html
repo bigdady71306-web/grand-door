@@ -304,12 +304,17 @@
             try {
                 const finishType = document.getElementById('finishType').value;
 
-                // Convert uploaded image to base64
+                // Resize and compress image before sending
+                const MAX_SIZE = 1024;
                 const canvas = document.createElement('canvas');
-                canvas.width = uploadedImage.naturalWidth;
-                canvas.height = uploadedImage.naturalHeight;
-                canvas.getContext('2d').drawImage(uploadedImage, 0, 0);
-                const imageBase64 = canvas.toDataURL('image/jpeg', 0.8);
+                let w = uploadedImage.naturalWidth;
+                let h = uploadedImage.naturalHeight;
+                if (w > h && w > MAX_SIZE) { h = Math.round(h * MAX_SIZE / w); w = MAX_SIZE; }
+                else if (h > MAX_SIZE) { w = Math.round(w * MAX_SIZE / h); h = MAX_SIZE; }
+                canvas.width = w;
+                canvas.height = h;
+                canvas.getContext('2d').drawImage(uploadedImage, 0, 0, w, h);
+                const imageBase64 = canvas.toDataURL('image/jpeg', 0.7);
 
                 const response = await fetch('/api/generate-preview', {
                     method: 'POST',
