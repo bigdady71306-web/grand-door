@@ -26,11 +26,30 @@ module.exports = async function handler(req, res) {
 
     const prompt = prompts[finishType] || prompts.natural;
 
+    // Upload image to Replicate file storage
+    const base64Data = imageData.replace(/^data:image\/\w+;base64,/, '');
+    const imageBuffer = Buffer.from(base64Data, 'base64');
+    
+    const fileResponse = await fetch('https://api.replicate.com/v1/files', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Token ${process.env.REPLICATE_API_TOKEN}`,
+        'Content-Type': 'application/octet-stream',
+        'Content-Length': imageBuffer.length,
+      },
+      body: imageBuffer,
+    });
+    
+    const fileData = await fileResponse.json();
+    const imageUrl = fileData.urls?.get || fileData.url;
+
+    if (!imageUrl) throw new Error('Failed to upload image: ' + JSON.stringify(fileData));
+
     const output = await replicate.run(
       "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f",
       {
         input: {
-          image: imageData,
+          image: imageUrl,
           prompt,
           negative_prompt: "blurry, low quality, distorted, damaged, ugly",
           num_inference_steps: 30,
@@ -48,5 +67,3 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Failed to generate preview', details: error.message });
   }
 }
-
-// cache bust Sat Apr  4 16:57:44 UTC 2026
