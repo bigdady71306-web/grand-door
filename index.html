@@ -765,6 +765,12 @@
     </footer>
 
     <script>
+        // Auto-navigate if coming from preview page
+        document.addEventListener('DOMContentLoaded', function() {
+            const autoPage = sessionStorage.getItem('autoPage');
+            if (autoPage) { sessionStorage.removeItem('autoPage'); showPage(autoPage); }
+        });
+
         function showPage(id) {
             if (id === 'transform') { window.location.href = 'preview.html'; return; }
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
