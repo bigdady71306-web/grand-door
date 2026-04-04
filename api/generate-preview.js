@@ -26,24 +26,22 @@ module.exports = async function handler(req, res) {
 
     const prompt = prompts[finishType] || prompts.natural;
 
-    // Upload image to Replicate file storage
-    const base64Data = imageData.replace(/^data:image\/\w+;base64,/, '');
-    const imageBuffer = Buffer.from(base64Data, 'base64');
+    // Upload to imgbb
+    const base64Only = imageData.replace(/^data:image\/\w+;base64,/, '');
     
-    const fileResponse = await fetch('https://api.replicate.com/v1/files', {
+    const formData = new URLSearchParams();
+    formData.append('image', base64Only);
+    formData.append('expiration', '600'); // 10 min temp
+    
+    const uploadRes = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
       method: 'POST',
-      headers: {
-        'Authorization': `Token ${process.env.REPLICATE_API_TOKEN}`,
-        'Content-Type': 'image/jpeg',
-        'Content-Disposition': 'attachment; filename="door.jpg"',
-      },
-      body: imageBuffer,
+      body: formData,
     });
+    const uploadData = await uploadRes.json();
     
-    const fileData = await fileResponse.json();
-    const imageUrl = fileData.urls?.get || fileData.url;
-
-    if (!imageUrl) throw new Error('Failed to upload image: ' + JSON.stringify(fileData));
+    if (!uploadData.success) throw new Error('Image upload failed: ' + JSON.stringify(uploadData));
+    
+    const imageUrl = uploadData.data.url;
 
     const output = await replicate.run(
       "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f",
@@ -63,7 +61,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ success: true, previewUrl });
 
   } catch (error) {
-    console.error('Replicate error:', error);
+    console.error('Error:', error);
     return res.status(500).json({ error: 'Failed to generate preview', details: error.message });
   }
 }
