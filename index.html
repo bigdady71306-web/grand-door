@@ -82,14 +82,16 @@
         .stat-number { font-size: 2.2em; font-weight: 900; display: block; line-height: 1; }
         .stat-label { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
 
-        /* ===== HERO BANNER (replaces full-screen hero) ===== */
+        /* ===== HERO BANNER ===== */
         .hero-banner {
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url('images/hero-grand-doors.jpg') center/cover no-repeat;
-            padding: 70px 40px;
+            background: #111;
+            padding: 55px 40px;
             text-align: center;
+            border-bottom: 3px solid #cc0000;
         }
-        .hero-banner h1 { color: #fff; font-size: 2.8em; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
-        .hero-banner p { color: #ccc; font-size: 1.1em; margin-bottom: 30px; letter-spacing: 1px; }
+        .hero-banner-logo { height: 120px; width: auto; margin-bottom: 20px; }
+        .hero-banner h1 { color: #fff; font-size: 1.4em; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; color: #ccc; }
+        .hero-banner p { color: #888; font-size: 0.95em; margin-bottom: 28px; letter-spacing: 1px; }
         .hero-cta-row { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
         .btn-primary { background: #cc0000; color: #fff; padding: 15px 35px; font-size: 1em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
         .btn-primary:hover { background: #aa0000; }
@@ -258,8 +260,9 @@
 
     <!-- Hero Banner -->
     <div class="hero-banner" id="hero-banner">
-        <h1>Restore Your Door's <span style="color:#cc0000;">Beauty</span></h1>
-        <p>Over 20 Years of Master Craftsmanship · Serving Conroe, The Woodlands &amp; Houston</p>
+        <img src="images/logo-new.jpg" alt="Grand Doors" class="hero-banner-logo" onerror="this.src='images/logo.jpg'">
+        <h1>Conroe &bull; The Woodlands &bull; Houston</h1>
+        <p>Over 20 Years of Master Craftsmanship &mdash; We Restore the Beauty That Was Always There</p>
         <div class="hero-cta-row">
             <button class="btn-primary" onclick="showPage('quote')">Get a Free Quote</button>
             <button class="btn-secondary" onclick="showPage('portfolio')">View Our Work</button>
@@ -288,8 +291,8 @@
                 </div>
                 <div class="service-card" onclick="showPage('portfolio')" style="cursor:pointer;">
                     <h3>Our Portfolio</h3>
-                    <div class="service-price" style="font-size:1.6em; color:#111;">500+ Jobs</div>
-                    <p>Browse before &amp; after transformations — doors, cabinets, furniture and more.</p>
+                    <div class="service-price" style="font-size:1.4em; color:#111;">Before &amp; After</div>
+                    <p>See real transformations — doors, cabinets, furniture and more. The proof is in the work.</p>
                     <button class="btn-book">View Portfolio</button>
                 </div>
                 <div class="service-card featured" onclick="showPage('contact')" style="cursor:pointer;">
