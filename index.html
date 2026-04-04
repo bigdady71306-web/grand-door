@@ -28,7 +28,14 @@
             right: 0;
             z-index: 1000;
         }
-        .hero-banner { margin-top: 130px; }
+        .promo-bar { background: #003087; color: #fff; text-align: center; padding: 10px 20px; font-size: 0.95em; font-weight: 700; letter-spacing: 0.5px; position: fixed; top: 0; left: 0; right: 0; z-index: 1001; }
+        .promo-bar span { color: #ff4444; text-decoration: line-through; margin-right: 4px; }
+        .promo-bar strong { color: #fff; font-size: 1.1em; }
+        .promo-bar .badge { background: #cc0000; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.85em; margin-left: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        header { top: 37px; }
+        nav { top: 124px !important; }
+        .hero-banner { margin-top: 167px; }
+        main { margin-top: 167px; }
         main { margin-top: 130px; }
         .header-inner {
             display: flex;
@@ -215,6 +222,11 @@
 
         /* ===== MOBILE ===== */
         @media (max-width: 768px) {
+            .promo-bar { font-size: 0.78em; padding: 8px 10px; }
+            header { top: 33px; }
+            nav { top: 103px !important; }
+            .hero-banner { margin-top: 160px !important; }
+            main { margin-top: 160px !important; }
             .header-inner { padding: 10px 15px; }
             .header-logo { height: 45px; }
             .header-contact { display: none; }
@@ -241,6 +253,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Promo Bar -->
+    <div class="promo-bar">🔥 April &amp; May Special: Full Door Refinish <span>$199</span> <strong>$99</strong> <span class="badge">Limited Time</span> &nbsp;·&nbsp; <a href="#" onclick="showPage('contact'); return false;" style="color:#fff; text-decoration:underline;">Book Now</a></div>
 
     <!-- Header -->
     <header>
