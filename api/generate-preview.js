@@ -17,13 +17,13 @@ module.exports = async function handler(req, res) {
     const replicate = new Replicate({ auth: process.env.REPLICATE_API_TOKEN });
 
     const prompts = {
-      'natural': 'make it a professionally restored natural wood door with rich grain and clear protective coating',
-      'dark-stain': 'make it a dark mahogany stained wood door with deep rich brown color and glossy finish',
-      'medium-stain': 'make it a medium oak stained wood door with warm brown tones and smooth finish',
-      'light-stain': 'make it a light cherry stained wood door with warm amber tones',
-      'paint-white': 'make it a freshly painted white door with smooth satin finish',
-      'paint-black': 'make it a modern black painted door with sleek smooth finish',
-      'paint-custom': 'make it a freshly painted door with smooth professional finish'
+      'natural': 'professionally refinished front door only, rich natural wood grain, clear satin urethane coating, keep surrounding walls and house unchanged',
+      'dark-stain': 'front door only refinished in dark mahogany stain, deep rich brown, glossy finish, keep surrounding walls and house unchanged',
+      'medium-stain': 'front door only refinished in medium oak stain, warm brown tones, smooth finish, keep surrounding walls and house unchanged',
+      'light-stain': 'front door only refinished in light cherry stain, warm amber tones, keep surrounding walls and house unchanged',
+      'paint-white': 'front door only freshly painted bright white, smooth satin finish, keep surrounding walls and house unchanged',
+      'paint-black': 'front door only painted modern matte black, sleek finish, keep surrounding walls and house unchanged',
+      'paint-custom': 'front door only freshly painted, smooth professional finish, keep surrounding walls and house unchanged'
     };
 
     const prompt = prompts[finishType] || prompts.natural;
@@ -53,8 +53,8 @@ module.exports = async function handler(req, res) {
           prompt,
           negative_prompt: "blurry, low quality, distorted, damaged, ugly",
           num_inference_steps: 30,
-          image_guidance_scale: 1.5,
-          guidance_scale: 7.5,
+          image_guidance_scale: 2.5,
+          guidance_scale: 9.0,
         }
       }
     );
