@@ -304,6 +304,50 @@
         <div style="text-align: center; margin-top: 50px;">
             <a href="https://www.google.com/search?q=Grand+Doors+Refinishing+Conroe" target="_blank" style="display: inline-block; background: #4285f4; color: #fff; padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Read More Reviews on Google</a>
         </div>
+
+        <!-- Write a Review Form -->
+        <div style="max-width: 700px; margin: 60px auto 0; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border-top: 4px solid #6d1f1f;">
+            <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 8px; text-align: center;">Leave a Review</h3>
+            <p style="text-align: center; color: #777; margin-bottom: 30px;">We'd love to hear about your experience!</p>
+
+            <form id="reviewForm" action="https://formspree.io/f/mzdkaqvo" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_subject" value="New Customer Review - Grand Doors">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 6px; font-weight: bold; color: #2c1810;">Your Name *</label>
+                        <input type="text" name="reviewer_name" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 6px; font-weight: bold; color: #2c1810;">Star Rating *</label>
+                        <div id="starRating" style="font-size: 2.2em; cursor: pointer; letter-spacing: 4px; user-select: none;" data-rating="0">
+                            <span onclick="setRating(1)">☆</span>
+                            <span onclick="setRating(2)">☆</span>
+                            <span onclick="setRating(3)">☆</span>
+                            <span onclick="setRating(4)">☆</span>
+                            <span onclick="setRating(5)">☆</span>
+                        </div>
+                        <input type="hidden" name="star_rating" id="starRatingValue" required value="">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: bold; color: #2c1810;">Your Review *</label>
+                    <textarea name="review_text" required rows="4" placeholder="Tell others about your experience with Grand Doors..." style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; resize: vertical;"></textarea>
+                </div>
+
+                <div style="border: 2px dashed #d4af37; padding: 25px; text-align: center; border-radius: 8px; background: #fdf9f0; margin-bottom: 20px;">
+                    <label style="cursor: pointer; color: #6d1f1f; font-weight: bold; font-size: 1.05em;">
+                        📸 Add Photos (Optional)<br>
+                        <small style="color: #999; font-weight: normal;">Show off your beautiful door! JPG/PNG up to 10MB each</small>
+                        <input type="file" name="review_photos" accept="image/*" multiple style="display: none;" onchange="showReviewFileNames(this)">
+                    </label>
+                    <div id="reviewFileNames" style="margin-top: 8px; font-size: 0.9em; color: #5d4037;"></div>
+                </div>
+
+                <button type="submit" style="width: 100%; padding: 16px; background: #6d1f1f; color: #fff; font-size: 1.2em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#8b2828'" onmouseout="this.style.background='#6d1f1f'">Submit Review</button>
+            </form>
+        </div>
     </section>
 
     <!-- Portfolio Section -->
@@ -602,6 +646,32 @@
             // TODO: Add backend submission logic
         }
         
+        function setRating(rating) {
+            const stars = document.querySelectorAll('#starRating span');
+            document.getElementById('starRatingValue').value = rating;
+            document.querySelector('#starRating').dataset.rating = rating;
+            stars.forEach((s, i) => { s.textContent = i < rating ? '★' : '☆'; s.style.color = i < rating ? '#d4af37' : '#ccc'; });
+        }
+
+        function showReviewFileNames(input) {
+            const el = document.getElementById('reviewFileNames');
+            el.textContent = input.files.length > 0 ? 'Selected: ' + Array.from(input.files).map(f => f.name).join(', ') : '';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const reviewForm = document.getElementById('reviewForm');
+            if (reviewForm) {
+                reviewForm.addEventListener('submit', function(e) {
+                    if (!document.getElementById('starRatingValue').value) {
+                        e.preventDefault();
+                        alert('Please select a star rating.');
+                        return;
+                    }
+                    alert('Thank you for your review! We appreciate your feedback.');
+                });
+            }
+        });
+
         function showFileNames(input) {
             const fileList = document.getElementById('fileNames');
             if (input.files.length > 0) {
