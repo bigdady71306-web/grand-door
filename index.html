@@ -13,696 +13,749 @@
         gtag('js', new Date());
         gtag('config', 'G-Z2B8WT5L8Z');
     </script>
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Georgia', serif; line-height: 1.6; color: #2c1810; background: url('images/hero-grand-doors.jpg') center/cover fixed no-repeat; }
-        
-        /* Navigation Menu */
-        nav { position: fixed; top: 50%; right: 30px; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 15px; transition: all 0.3s; }
-        nav.hidden { right: -300px; opacity: 0; pointer-events: none; }
-        .nav-button { background: rgba(109, 31, 31, 0.95); color: #d4af37; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; text-transform: uppercase; transition: all 0.3s; border: 2px solid #d4af37; cursor: pointer; text-align: center; min-width: 200px; display: block; box-sizing: border-box; }
-        .nav-button:hover { background: #d4af37; color: #2c1810; transform: translateX(-5px); }
-        
 
-        
-        /* Hero Section */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-cta { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); }
-        .hero-cta p { font-size: 1.8em; color: #d4af37; margin-bottom: 20px; text-shadow: 3px 3px 6px rgba(0,0,0,0.9); font-weight: bold; }
-        .cta-button { background: #d4af37; color: #2c1810; padding: 20px 50px; font-size: 1.4em; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5); text-transform: uppercase; display: inline-block; border: none; cursor: pointer; }
-        .cta-button:hover { background: #b8941f; transform: translateY(-3px); }
-        
-        /* Content Sections */
-        .content-section { background: rgba(245, 240, 235, 0.98); padding: 80px 60px; margin: 40px auto; max-width: 1400px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; position: relative; }
-        #about { background: rgba(210, 180, 140, 0.98); }
-        .back-to-home { position: absolute; top: 20px; left: 20px; background: #6d1f1f; color: #d4af37; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 2px solid #d4af37; transition: all 0.3s; cursor: pointer; }
-        .back-to-home:hover { background: #d4af37; color: #2c1810; }
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Arial', sans-serif; color: #111; background: #000; }
+
+        /* ===== COLOR PALETTE ===== */
+        /* Black: #000000 / #111111 */
+        /* Red: #cc0000 */
+        /* White: #ffffff / #f5f5f5 */
+        /* Blue: #003087 */
+
+        /* ===== DESKTOP NAV (right side vertical) ===== */
+        nav {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            transition: right 0.3s ease;
+        }
+        nav.hidden { right: -220px; }
+        .nav-button {
+            background: rgba(0,0,0,0.92);
+            color: #fff;
+            padding: 14px 22px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+            border-left: 4px solid #cc0000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            text-align: left;
+            min-width: 190px;
+            display: block;
+            transition: all 0.2s;
+        }
+        .nav-button:hover { background: #cc0000; color: #fff; border-left-color: #fff; padding-left: 28px; }
+
+        /* ===== MOBILE HEADER ===== */
+        .mobile-header { display: none; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)), url('images/hero-grand-doors.jpg') center/cover no-repeat fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        .hero-logo { height: 130px; width: auto; margin-bottom: 25px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8)); }
+        .hero-tagline { color: #fff; font-size: 1.5em; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        .hero-sub { color: #ccc; font-size: 1em; margin-bottom: 40px; letter-spacing: 1px; }
+        .hero-cta-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .btn-primary { background: #cc0000; color: #fff; padding: 18px 40px; font-size: 1.1em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-primary:hover { background: #aa0000; transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: #fff; padding: 17px 38px; font-size: 1.1em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-secondary:hover { background: #fff; color: #111; }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            background: #cc0000;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+        .stat { text-align: center; color: #fff; }
+        .stat-number { font-size: 2.5em; font-weight: 900; display: block; line-height: 1; }
+        .stat-label { font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            display: none;
+            min-height: 100vh;
+            background: #f5f5f5;
+            padding: 80px 60px;
+            position: relative;
+        }
         .content-section.active { display: block; }
-        .section-title { font-size: 3em; color: #6d1f1f; margin-bottom: 40px; text-align: center; }
-        
-        /* Portfolio Grid */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .portfolio-item { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .portfolio-item h3 { background: linear-gradient(135deg, #6d1f1f 0%, #3d1308 100%); color: #d4af37; padding: 15px; text-align: center; font-size: 1.5em; }
+        #about { background: #111; color: #f5f5f5; }
+        #reviews { background: #fff; }
+        #whychoose { background: #f5f5f5; }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #cc0000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9em;
+            cursor: pointer;
+            z-index: 1500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: #aa0000; }
+
+        .section-title {
+            font-size: 2.8em;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #111;
+        }
+        #about .section-title { color: #fff; }
+        #about .section-title span { color: #cc0000; }
+        .section-title span { color: #cc0000; }
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: #cc0000;
+            margin: 0 auto 50px;
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1300px; margin: 0 auto; }
+        .portfolio-item { background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .portfolio-item-title { background: #111; color: #fff; padding: 14px 20px; font-size: 1em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-left: 4px solid #cc0000; }
         .before-after { display: grid; grid-template-columns: 1fr 1fr; }
         .before-after div { position: relative; }
-        .before-after img { width: 100%; height: 300px; object-fit: cover; }
-        .before-after .label { position: absolute; top: 10px; left: 10px; background: rgba(212, 175, 55, 0.95); color: #2c1810; padding: 6px 15px; border-radius: 5px; font-weight: bold; }
-        
-        /* Services Grid */
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 50px; max-width: 1400px; margin-left: auto; margin-right: auto; }
-        .service-card { background: rgba(109, 31, 31, 0.1); padding: 30px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center; }
-        .service-card h3 { color: #6d1f1f; font-size: 2em; margin-bottom: 15px; }
-        .price { font-size: 2.5em; font-weight: bold; color: #6d1f1f; margin: 15px 0; }
-        .service-card p { font-size: 1.1em; line-height: 1.6; }
-        
-        /* Contact Section */
-        .contact-info { text-align: center; font-size: 1.3em; margin-bottom: 40px; }
-        .phone-number { font-size: 2.5em; color: #6d1f1f; font-weight: bold; margin: 20px 0; }
-        .phone-number a { color: #6d1f1f; text-decoration: none; }
-        .phone-number a:hover { color: #d4af37; }
-        
-        /* Appointment Scheduler */
-        .scheduler { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .scheduler input, .scheduler select { width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; }
-        .scheduler button { width: 100%; padding: 20px; background: #6d1f1f; color: #f5f0eb; font-size: 1.3em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
-        .scheduler button:hover { background: #8b2828; transform: translateY(-2px); }
-        
-        /* Mobile Header */
-        .mobile-header { display: none; }
-        
+        .before-after img { width: 100%; height: 280px; object-fit: cover; display: block; }
+        .ba-label { position: absolute; top: 10px; left: 10px; background: #cc0000; color: #fff; padding: 4px 12px; font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; }
+
+        /* ===== SERVICE CARDS ===== */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; max-width: 1300px; margin: 0 auto; }
+        .service-card { background: #fff; padding: 35px 30px; border-radius: 6px; border-top: 4px solid #cc0000; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; }
+        .service-card.featured { border-top-color: #003087; box-shadow: 0 6px 25px rgba(0,48,135,0.2); }
+        .service-card h3 { font-size: 1.3em; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: #111; margin-bottom: 12px; }
+        .service-price { font-size: 3em; font-weight: 900; color: #cc0000; line-height: 1; margin: 15px 0; }
+        .service-card.featured .service-price { color: #003087; }
+        .service-card p { color: #555; font-size: 0.95em; line-height: 1.7; margin-bottom: 20px; }
+        .service-note { font-size: 0.85em !important; color: #003087 !important; font-weight: 700 !important; border-top: 1px solid #e0e0e0; padding-top: 15px; margin-top: 10px; }
+        .btn-book { width: 100%; padding: 14px; background: #111; color: #fff; border: none; border-radius: 4px; font-weight: 700; font-size: 0.95em; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background 0.2s; }
+        .btn-book:hover { background: #cc0000; }
+        .service-card.featured .btn-book { background: #003087; }
+        .service-card.featured .btn-book:hover { background: #001a5e; }
+
+        /* ===== CONTACT / SCHEDULER ===== */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; }
+        .contact-info-block { padding: 40px; background: #111; color: #fff; border-radius: 6px; }
+        .contact-info-block h3 { font-size: 1.5em; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; color: #fff; border-left: 4px solid #cc0000; padding-left: 15px; }
+        .contact-phone { font-size: 2.2em; font-weight: 900; color: #cc0000; margin: 20px 0 10px; display: block; text-decoration: none; }
+        .contact-phone:hover { color: #ff3333; }
+        .contact-detail { color: #ccc; font-size: 1em; margin-bottom: 8px; }
+        .contact-detail a { color: #ccc; text-decoration: none; }
+        .scheduler-block { background: #fff; padding: 40px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .scheduler-block h3 { font-size: 1.5em; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; color: #111; border-left: 4px solid #cc0000; padding-left: 15px; }
+        .form-input { width: 100%; padding: 13px 15px; border: 2px solid #e0e0e0; border-radius: 4px; font-size: 0.95em; margin-bottom: 15px; transition: border-color 0.2s; }
+        .form-input:focus { outline: none; border-color: #cc0000; }
+        .btn-submit { width: 100%; padding: 16px; background: #cc0000; color: #fff; border: none; border-radius: 4px; font-size: 1.05em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background 0.2s; }
+        .btn-submit:hover { background: #aa0000; }
+
+        /* ===== ABOUT ===== */
+        .about-inner { max-width: 850px; margin: 0 auto; }
+        .about-inner p { font-size: 1.1em; line-height: 1.9; margin-bottom: 20px; color: #ccc; }
+        .about-quote { font-size: 1.4em; color: #fff; font-style: italic; text-align: center; border-left: 4px solid #cc0000; padding: 20px 30px; margin: 40px 0; background: rgba(204,0,0,0.1); }
+        .about-name { text-align: center; margin-bottom: 35px; }
+        .about-name h3 { color: #fff; font-size: 2em; margin-bottom: 5px; }
+        .about-name p { color: #cc0000; font-size: 1em; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* ===== REVIEWS ===== */
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto 60px; }
+        .review-card { background: #f9f9f9; padding: 30px; border-radius: 6px; border-left: 4px solid #cc0000; }
+        .review-stars { color: #cc0000; font-size: 1.3em; margin-bottom: 12px; }
+        .review-text { font-style: italic; color: #444; line-height: 1.7; margin-bottom: 15px; }
+        .review-author { font-weight: 700; color: #111; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
+        .google-btn { display: inline-block; background: #4285f4; color: #fff; padding: 14px 30px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.95em; text-align: center; }
+        .google-btn:hover { background: #2b6de8; }
+
+        /* ===== REVIEW FORM ===== */
+        .review-form-wrap { max-width: 680px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 4px solid #003087; }
+        .review-form-wrap h3 { font-size: 1.6em; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; color: #111; }
+        .review-form-wrap p { color: #777; margin-bottom: 25px; }
+        .star-row { font-size: 2.5em; cursor: pointer; letter-spacing: 5px; user-select: none; margin-bottom: 5px; }
+        .star-row span { color: #ccc; transition: color 0.1s; }
+        .photo-upload { border: 2px dashed #003087; padding: 20px; text-align: center; border-radius: 4px; background: #f0f4ff; margin-bottom: 15px; cursor: pointer; }
+        .photo-upload label { cursor: pointer; color: #003087; font-weight: 700; }
+
+        /* ===== COMPARISON TABLE ===== */
+        .compare-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .compare-table thead tr { background: #111; color: #fff; }
+        .compare-table th { padding: 18px 20px; text-align: center; font-size: 1em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .compare-table th:first-child { text-align: left; }
+        .compare-table th.highlight { background: #cc0000; }
+        .compare-table td { padding: 18px 20px; border-bottom: 1px solid #eee; text-align: center; color: #555; }
+        .compare-table td:first-child { text-align: left; font-weight: 700; color: #111; }
+        .compare-table td.highlight { background: rgba(204,0,0,0.05); font-weight: 700; color: #cc0000; font-size: 1.1em; }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .badge { background: #cc0000; color: #fff; font-size: 0.7em; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+
+        /* ===== PROCESS SECTION ===== */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1300px; margin: 0 auto; }
+        .process-step { background: #fff; padding: 30px; border-radius: 6px; border-top: 4px solid #cc0000; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+        .step-num { font-size: 3em; font-weight: 900; color: #eee; line-height: 1; margin-bottom: 10px; }
+        .process-step h4 { font-size: 1em; font-weight: 700; text-transform: uppercase; color: #111; margin-bottom: 10px; letter-spacing: 0.5px; }
+        .process-step p { color: #666; font-size: 0.9em; line-height: 1.6; }
+
+        /* ===== QUOTE FORM ===== */
+        .quote-wrap { max-width: 750px; margin: 0 auto; background: #fff; padding: 50px; border-radius: 6px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; color: #333; }
+        .photo-drop { border: 2px dashed #cc0000; padding: 28px; text-align: center; border-radius: 4px; background: #fff8f8; }
+        .photo-drop label { color: #cc0000; font-weight: 700; cursor: pointer; }
+
+        /* ===== MOBILE ===== */
         @media (max-width: 768px) {
-            /* Mobile body - dark wood gradient background */
-            body { background: linear-gradient(to bottom, #2c1810 0%, #1a0f08 100%); }
+            body { background: #000; }
 
-            /* Mobile header - fixed top bar with logo + hamburger */
-            .mobile-header { display: flex !important; position: fixed; top: 0; left: 0; right: 0; height: 65px; background: rgba(0, 0, 0, 0.97); padding: 0 15px; border-bottom: 2px solid #d4af37; z-index: 2000; justify-content: space-between; align-items: center; }
-            .mobile-logo { height: 48px; width: auto; }
-            .menu-toggle { background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 5px; padding: 8px 13px; font-size: 1.4em; cursor: pointer; line-height: 1; }
+            .mobile-header {
+                display: flex !important;
+                position: fixed; top: 0; left: 0; right: 0; height: 60px;
+                background: #000; border-bottom: 2px solid #cc0000;
+                padding: 0 15px; z-index: 2000;
+                justify-content: space-between; align-items: center;
+            }
+            .mobile-logo { height: 40px; width: auto; }
+            .menu-toggle { background: transparent; border: 2px solid #cc0000; color: #cc0000; border-radius: 4px; padding: 7px 11px; font-size: 1.3em; cursor: pointer; }
 
-            /* Desktop nav - hidden on mobile, slides in as drawer */
-            nav { position: fixed !important; top: 65px !important; left: -280px !important; bottom: 0 !important; width: 280px !important; background: rgba(80, 15, 15, 0.99) !important; border-right: 3px solid #d4af37 !important; z-index: 1900 !important; display: flex !important; flex-direction: column !important; overflow: hidden !important; transform: none !important; transition: left 0.3s ease !important; right: auto !important; }
+            nav {
+                position: fixed !important; top: 60px !important; left: -280px !important;
+                bottom: 0 !important; width: 280px !important; right: auto !important;
+                background: #111 !important; border-right: 3px solid #cc0000 !important;
+                z-index: 1900 !important; display: flex !important; flex-direction: column !important;
+                overflow: hidden !important; transform: none !important; transition: left 0.3s ease !important;
+            }
             nav.open { left: 0 !important; }
+            .nav-scroll-wrapper { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 8px 0; }
+            .nav-button { padding: 16px 20px !important; font-size: 0.9em !important; min-width: unset !important; transform: none !important; border-left: 4px solid #cc0000 !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; border-radius: 0 !important; }
+            .nav-button:hover { padding-left: 20px !important; }
+            body.menu-open::after { content: ''; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1800; }
 
-            /* Scrollable wrapper inside nav */
-            .nav-scroll-wrapper { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 10px 0; }
+            .hero { min-height: calc(100vh - 60px); margin-top: 60px; padding: 30px 20px 50px; background-attachment: scroll; }
+            .hero-logo { height: 90px; }
+            .hero-tagline { font-size: 1.1em; }
+            .stats-bar { gap: 30px; padding: 20px; }
+            .stat-number { font-size: 2em; }
 
-            /* Nav buttons in mobile drawer */
-            .nav-button { display: block !important; width: 100% !important; padding: 16px 20px !important; font-size: 0.95em !important; text-align: left !important; border: none !important; border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important; border-radius: 0 !important; background: transparent !important; color: #f5f0eb !important; min-width: unset !important; transform: none !important; }
-            .nav-button:hover { background: rgba(212, 175, 55, 0.15) !important; color: #d4af37 !important; transform: none !important; }
+            .content-section { padding: 75px 20px 40px; min-height: 100vh; }
+            .section-title { font-size: 1.8em; }
+            .back-btn { top: 10px; left: 10px; }
 
-            /* Overlay when menu is open */
-            body.menu-open::after { content: ''; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1800; }
-
-            /* Hero section - full height with background image */
-            .hero { min-height: calc(100vh - 65px) !important; margin-top: 65px !important; padding: 20px 15px 50px !important; background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.5)), url('images/hero-grand-doors.jpg') center/cover no-repeat !important; display: flex !important; flex-direction: column !important; justify-content: flex-end !important; position: relative !important; }
-
-            /* Content sections */
-            .content-section { margin: 0 !important; border-radius: 0 !important; padding: 80px 20px 40px !important; min-height: 100vh; }
-            .section-title { font-size: 1.9em; }
-            .back-to-home { position: fixed !important; top: 75px !important; left: 15px !important; z-index: 1700 !important; padding: 8px 15px !important; font-size: 0.9em !important; }
-
-            /* Portfolio & service grids - single column */
-            .portfolio-grid { grid-template-columns: 1fr !important; gap: 25px !important; }
-            .service-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+            .portfolio-grid { grid-template-columns: 1fr !important; }
+            .service-grid { grid-template-columns: 1fr !important; }
             .before-after img { height: 200px !important; }
-            .service-card { padding: 25px 20px !important; }
-
-            /* Quote form - single column on mobile */
-            #quote .scheduler input, #quote form input, #quote form select, #quote form textarea { font-size: 16px !important; } /* prevent iOS zoom */
-            #quote form > div[style*="grid-template-columns"] { display: block !important; }
+            .contact-grid { grid-template-columns: 1fr !important; gap: 25px; }
+            .form-row { grid-template-columns: 1fr !important; }
+            .quote-wrap { padding: 30px 20px; }
+            .compare-table { font-size: 0.85em; }
+            .process-grid { grid-template-columns: 1fr 1fr !important; }
+            .form-input, .form-group input, .form-group select, .form-group textarea { font-size: 16px !important; }
         }
     </style>
 </head>
 <body>
+
     <!-- Mobile Header -->
     <div class="mobile-header">
-        <img src="images/logo.jpg" alt="Grand Doors" class="mobile-logo">
+        <img src="images/logo-new.jpg" alt="Grand Doors" class="mobile-logo" onerror="this.src='images/logo.jpg'">
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </div>
-    
-    <!-- Navigation Menu -->
+
+    <!-- Navigation -->
     <nav>
         <div class="nav-scroll-wrapper">
             <a href="#" class="nav-button" onclick="showSection('about'); return false;">About Us</a>
+            <a href="#" class="nav-button" onclick="showSection('process'); return false;">Our Process</a>
             <a href="#" class="nav-button" onclick="showSection('whychoose'); return false;">Why Choose Us</a>
-            <a href="#" class="nav-button" onclick="showSection('transform'); return false;">See Your Door Transformed</a>
             <a href="#" class="nav-button" onclick="showSection('portfolio'); return false;">Portfolio</a>
             <a href="#" class="nav-button" onclick="showSection('reviews'); return false;">Reviews</a>
-            <a href="#" class="nav-button" onclick="showSection('doors'); return false;">Doors</a>
+            <a href="#" class="nav-button" onclick="showSection('doors'); return false;">Door Services</a>
             <a href="#" class="nav-button" onclick="showSection('weatherstripping'); return false;">Weatherstripping</a>
             <a href="#" class="nav-button" onclick="showSection('other'); return false;">Other Services</a>
-            <a href="#" class="nav-button" onclick="showSection('quote'); return false;">Request Quote</a>
-            <a href="#" class="nav-button" onclick="showSection('contact'); return false;">Contact Now</a>
+            <a href="#" class="nav-button" onclick="showSection('transform'); return false;">AI Door Preview</a>
+            <a href="#" class="nav-button" onclick="showSection('quote'); return false;">Free Quote</a>
+            <a href="#" class="nav-button" onclick="showSection('contact'); return false;">Contact / Book</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
+        <img src="images/logo-new.jpg" alt="Grand Doors" class="hero-logo" onerror="this.src='images/logo.jpg'">
+        <p class="hero-tagline">Conroe &bull; The Woodlands &bull; Houston</p>
+        <p class="hero-sub">Over 20 Years of Master Craftsmanship</p>
+        <div class="hero-cta-row">
+            <button class="btn-primary" onclick="showSection('quote')">Get a Free Quote</button>
+            <button class="btn-secondary" onclick="showSection('portfolio')">View Our Work</button>
+        </div>
     </section>
 
-    <!-- About Us Section -->
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat"><span class="stat-number">20+</span><span class="stat-label">Years Experience</span></div>
+        <div class="stat"><span class="stat-number">500+</span><span class="stat-label">Doors Restored</span></div>
+        <div class="stat"><span class="stat-number">5★</span><span class="stat-label">Google Rating</span></div>
+        <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Satisfaction</span></div>
+    </div>
+
+    <!-- About -->
     <section class="content-section" id="about">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">About Us</h2>
-        <div style="max-width: 900px; margin: 0 auto; font-size: 1.2em; line-height: 1.8;">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="color: #6d1f1f; font-size: 2em; margin-bottom: 10px;">John Garcia</h3>
-                <p style="font-style: italic; color: #5d4037;">Founder & Master Craftsman</p>
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">About <span>Us</span></h2>
+        <div class="section-divider"></div>
+        <div class="about-inner">
+            <div class="about-name">
+                <h3>John Garcia</h3>
+                <p>Founder &amp; Master Craftsman</p>
             </div>
-            <p style="margin-bottom: 20px;">
-                It started as punishment. Growing up, whenever I got in trouble, my father would send me to his workshop. 
-                "You want to act like you don't care? Fine. Go sand that door until it's smooth as glass," he'd say. 
-                I hated it at first—the sawdust, the repetitive motion, the quiet.
-            </p>
-            <p style="margin-bottom: 20px;">
-                But somewhere between those hours of sanding and staining, something changed. I began to see what he saw: 
-                the beauty hidden beneath years of wear, the satisfaction of bringing something broken back to life. 
-                Each door told a story, and I was learning to honor it.
-            </p>
-            <p style="margin-bottom: 20px;">
-                Twenty years later, what started as punishment has become my passion. With over 20 years of experience 
-                perfecting this craft, Grand Doors isn't just a business—it's a tribute to my father's patience and 
-                the lessons he taught me. Every door we restore carries that same care and respect he showed me in his workshop.
-            </p>
-            <p style="color: #6d1f1f; font-weight: bold; text-align: center; font-size: 1.3em; margin-top: 40px;">
-                "We don't just refinish doors. We restore the beauty that was always there."
-            </p>
+            <p>It started as punishment. Growing up, whenever I got in trouble, my father would send me to his workshop. "You want to act like you don't care? Fine. Go sand that door until it's smooth as glass," he'd say. I hated it at first — the sawdust, the repetitive motion, the quiet.</p>
+            <p>But somewhere between those hours of sanding and staining, something changed. I began to see what he saw: the beauty hidden beneath years of wear, the satisfaction of bringing something broken back to life. Each door told a story, and I was learning to honor it.</p>
+            <p>Twenty years later, what started as punishment has become my passion. With over 20 years of experience perfecting this craft, Grand Doors isn't just a business — it's a tribute to my father's patience and the lessons he taught me. Every door we restore carries that same care and respect he showed me in his workshop.</p>
+            <blockquote class="about-quote">"We don't just refinish doors. We restore the beauty that was always there."</blockquote>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="content-section" id="whychoose" style="background: rgba(245, 240, 235, 0.98);">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title" style="color: #6d1f1f;">Why Houston Chooses Grand Doors</h2>
-        <p class="section-subtitle" style="color: #5d4037; font-size: 1.2em; max-width: 800px; margin: 0 auto 40px;">Professional quality, honest pricing, and options our competitors don't offer</p>
-        
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div style="background: rgba(212, 175, 55, 0.1); border: 2px solid #d4af37; border-radius: 15px; padding: 30px; margin-bottom: 40px;">
-                <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 20px; text-align: center;">🏆 Our Exclusive $99 Restoration Service</h3>
-                <p style="font-size: 1.15em; line-height: 1.7; margin-bottom: 15px;">
-                    We noticed something missing in Houston's door refinishing market: <strong>affordable options for homeowners who don't need a full refinish.</strong>
-                </p>
-                <p style="font-size: 1.15em; line-height: 1.7; margin-bottom: 15px;">
-                    While our competitors start at $375 for full refinishing, we offer professional services at every price point. 
-                    Our $99 Restoration is perfect for doors with minor wear that just need expert attention—<strong>a service neither Rick's Front Door nor Lone Star Door offers.</strong>
-                </p>
-            </div>
+    <!-- Our Process -->
+    <section class="content-section" id="process">
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Our <span>Process</span></h2>
+        <div class="section-divider"></div>
+        <div class="process-grid">
+            <div class="process-step"><div class="step-num">01</div><h4>Arrive On Time</h4><p>We show up when we say we will. Your time matters.</p></div>
+            <div class="process-step"><div class="step-num">02</div><h4>Color Consultation</h4><p>We discuss stain options from our large sample book.</p></div>
+            <div class="process-step"><div class="step-num">03</div><h4>Remove Hardware</h4><p>Door is carefully removed from hinges and placed on sawhorses.</p></div>
+            <div class="process-step"><div class="step-num">04</div><h4>Protect Your Entry</h4><p>A fitted drop cloth seals your doorway — keeping air in and bugs out.</p></div>
+            <div class="process-step"><div class="step-num">05</div><h4>Chemical Strip</h4><p>We strip the door down to bare wood — no shortcuts.</p></div>
+            <div class="process-step"><div class="step-num">06</div><h4>Full Sand</h4><p>The entire door is sanded with fine-grit sandpaper.</p></div>
+            <div class="process-step"><div class="step-num">07</div><h4>Stain Application</h4><p>Your chosen stain is applied evenly for perfect coverage.</p></div>
+            <div class="process-step"><div class="step-num">08</div><h4>Weatherstripping</h4><p>New bottom weatherstripping installed for a proper seal.</p></div>
+            <div class="process-step"><div class="step-num">09</div><h4>4 Coats Urethane</h4><p>Four coats of marine-grade spar urethane for lasting protection.</p></div>
+            <div class="process-step"><div class="step-num">10</div><h4>Rehang &amp; Hardware</h4><p>Door is carefully rehung and all hardware reinstalled.</p></div>
+            <div class="process-step" style="border-top-color: #003087;"><div class="step-num" style="color:#dde8ff;">★</div><h4>1-Year Warranty</h4><p>Every door comes with a 1-year warranty. Extended options available up to 4 years.</p></div>
+        </div>
+    </section>
 
-            <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 25px; text-align: center;">Compare Our Competitors</h3>
-            
-            <!-- Comparison Table -->
-            <div style="overflow-x: auto; margin-bottom: 40px;">
-                <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden;">
-                    <thead>
-                        <tr style="background: #6d1f1f; color: #f5f0eb;">
-                            <th style="padding: 20px; text-align: left; font-size: 1.2em; border-right: 2px solid #d4af37;">Service</th>
-                            <th style="padding: 20px; text-align: center; font-size: 1.2em; border-right: 2px solid #d4af37;">Rick's Front Door</th>
-                            <th style="padding: 20px; text-align: center; font-size: 1.2em; border-right: 2px solid #d4af37;">Lone Star Door</th>
-                            <th style="padding: 20px; text-align: center; font-size: 1.2em; background: #d4af37; color: #2c1810;">Grand Doors</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 2px solid #f0f0f0;">
-                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Light Restoration</td>
-                            <td style="padding: 20px; text-align: center; color: #999;">Not Offered</td>
-                            <td style="padding: 20px; text-align: center; color: #999;">Not Offered</td>
-                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.1);"><strong style="font-size: 1.5em; color: #6d1f1f;">$99</strong><br><span style="color: #d4af37; font-weight: bold;">✓ Exclusive!</span></td>
-                        </tr>
-                        <tr style="border-bottom: 2px solid #f0f0f0;">
-                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Full Refinishing</td>
-                            <td style="padding: 20px; text-align: center;"><span style="font-size: 1.3em; color: #666;">$375</span></td>
-                            <td style="padding: 20px; text-align: center; color: #999; font-style: italic;">Call for Quote</td>
-                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.1);"><strong style="font-size: 1.5em; color: #6d1f1f;">$199</strong><br><span style="color: #d4af37; font-weight: bold;">✓ Save $176</span></td>
-                        </tr>
-                        <tr style="border-bottom: 2px solid #f0f0f0;">
-                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Door Paint Service</td>
-                            <td style="padding: 20px; text-align: center; color: #999;">Not Listed</td>
-                            <td style="padding: 20px; text-align: center; color: #999; font-style: italic;">Call for Quote</td>
-                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.1);"><strong style="font-size: 1.5em; color: #6d1f1f;">$150</strong></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 20px; font-weight: bold; color: #6d1f1f; font-size: 1.1em;">Executive Package<br><span style="font-size: 0.9em; font-weight: normal; color: #666;">(Complete + Weatherstripping + Coating)</span></td>
-                            <td style="padding: 20px; text-align: center;"><span style="font-size: 1.3em; color: #666;">$425+</span><br><span style="font-size: 0.9em; color: #999;">($375 + $50 armor coat)</span></td>
-                            <td style="padding: 20px; text-align: center; color: #999; font-style: italic;">Call for Quote</td>
-                            <td style="padding: 20px; text-align: center; background: rgba(212, 175, 55, 0.2); border: 3px solid #d4af37;"><strong style="font-size: 1.8em; color: #6d1f1f;">$299</strong><br><span style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Save $126+</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px; display: none;">
-                <div style="background: white; padding: 25px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center;">
-                    <h4 style="color: #6d1f1f; font-size: 1.4em; margin-bottom: 15px;">Light Restoration</h4>
-                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;"><strike>Competitors: Not Offered</strike></p>
-                    <p style="font-size: 2em; color: #6d1f1f; font-weight: bold; margin-bottom: 10px;">$99</p>
-                    <p style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Exclusive to Grand Doors!</p>
-                </div>
-                
-                <div style="background: white; padding: 25px; border-radius: 10px; border: 2px solid #6d1f1f; text-align: center;">
-                    <h4 style="color: #6d1f1f; font-size: 1.4em; margin-bottom: 15px;">Full Refinish</h4>
-                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;">Rick's: $375</p>
-                    <p style="font-size: 2em; color: #6d1f1f; font-weight: bold; margin-bottom: 10px;">$199</p>
-                    <p style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Save $176!</p>
-                </div>
-                
-                <div style="background: rgba(212, 175, 55, 0.1); padding: 25px; border-radius: 10px; border: 3px solid #d4af37; text-align: center;">
-                    <h4 style="color: #6d1f1f; font-size: 1.4em; margin-bottom: 15px;">Executive Package</h4>
-                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;">Rick's: $425+</p>
-                    <p style="font-size: 2em; color: #6d1f1f; font-weight: bold; margin-bottom: 10px;">$299</p>
-                    <p style="color: #d4af37; font-weight: bold; font-size: 1.1em;">✓ Save $126+ & Get More!</p>
-                </div>
-            </div>
+    <!-- Why Choose Us -->
+    <section class="content-section" id="whychoose">
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Why <span>Grand Doors</span></h2>
+        <div class="section-divider"></div>
+        <div style="overflow-x: auto; max-width: 1000px; margin: 0 auto 50px;">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;">Service</th>
+                        <th>Rick's Front Door</th>
+                        <th>Lone Star Door</th>
+                        <th class="highlight">Grand Doors ✓</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Light Restoration</td>
+                        <td style="color:#999;">Not Offered</td>
+                        <td style="color:#999;">Not Offered</td>
+                        <td class="highlight">$99 <span class="badge">Exclusive</span></td>
+                    </tr>
+                    <tr>
+                        <td>Full Refinish</td>
+                        <td>$375</td>
+                        <td style="color:#999;">Call for Quote</td>
+                        <td class="highlight">$199 <span class="badge">Save $176</span></td>
+                    </tr>
+                    <tr>
+                        <td>Door Paint</td>
+                        <td style="color:#999;">Not Listed</td>
+                        <td style="color:#999;">Call for Quote</td>
+                        <td class="highlight">$150</td>
+                    </tr>
+                    <tr>
+                        <td>Executive Package</td>
+                        <td>$425+</td>
+                        <td style="color:#999;">Call for Quote</td>
+                        <td class="highlight">$299 <span class="badge">Save $126+</span></td>
+                    </tr>
+                    <tr>
+                        <td>Annual Maintenance</td>
+                        <td style="color:#999;">Not Offered</td>
+                        <td style="color:#999;">Not Offered</td>
+                        <td class="highlight">$49/yr <span class="badge">Exclusive</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="max-width: 700px; margin: 0 auto; background: #111; color: #fff; padding: 40px; border-radius: 6px;">
+            <h3 style="font-size: 1.4em; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; color: #cc0000;">The Grand Doors Difference</h3>
+            <ul style="list-style: none; font-size: 1em; line-height: 2.2;">
+                <li>✓ &nbsp;<strong>Transparent pricing</strong> — no hidden costs, ever</li>
+                <li>✓ &nbsp;<strong>Options for every budget</strong> — $99 to $299</li>
+                <li>✓ &nbsp;<strong>Services competitors don't offer</strong></li>
+                <li>✓ &nbsp;<strong>20+ years of master craftsmanship</strong></li>
+                <li>✓ &nbsp;<strong>1-year warranty</strong> on every job</li>
+                <li>✓ &nbsp;<strong>Best value in Houston</strong></li>
+            </ul>
+            <button onclick="showSection('quote')" class="btn-primary" style="margin-top: 25px; width: 100%;">Get Your Free Quote</button>
+        </div>
+    </section>
 
-            <div style="background: #6d1f1f; color: #f5f0eb; padding: 35px; border-radius: 15px; text-align: center;">
-                <h3 style="font-size: 1.8em; margin-bottom: 20px; color: #d4af37;">The Grand Doors Difference</h3>
-                <ul style="list-style: none; padding: 0; font-size: 1.15em; line-height: 2; text-align: left; max-width: 600px; margin: 0 auto;">
-                    <li>✓ <strong>Transparent Pricing</strong> - No hidden costs or surprise fees</li>
-                    <li>✓ <strong>Options for Every Budget</strong> - From $99 restoration to $299 complete transformation</li>
-                    <li>✓ <strong>Exclusive Services</strong> - Light restoration option competitors don't offer</li>
-                    <li>✓ <strong>20+ Years Experience</strong> - Master craftsmanship on every door</li>
-                    <li>✓ <strong>Best Value in Houston</strong> - Premium quality without premium prices</li>
-                </ul>
-                <button onclick="showSection('contact')" style="margin-top: 30px; padding: 18px 40px; background: #d4af37; color: #2c1810; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1.2em;">Get Your Free Quote</button>
+    <!-- Portfolio -->
+    <section class="content-section" id="portfolio">
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Our <span>Portfolio</span></h2>
+        <div class="section-divider"></div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-item-title">Elegant Double Doors</div>
+                <div class="before-after">
+                    <div><img src="images/file_29---afb9a228-f0e3-4cc1-b9c0-e947b0f14cbf.jpg" alt="Before"><span class="ba-label">Before</span></div>
+                    <div><img src="images/file_30---415ee930-ecae-468f-98e5-c5a8ede872b2.jpg" alt="After"><span class="ba-label">After</span></div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-item-title">Arched Double Doors</div>
+                <div class="before-after">
+                    <div><img src="images/file_31---45573345-bf40-4bf9-9457-6bca41b1d9b3.jpg" alt="Before"><span class="ba-label">Before</span></div>
+                    <div><img src="images/file_32---93cafd14-a18a-4b49-9acd-d1446b29a113.jpg" alt="After"><span class="ba-label">After</span></div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-item-title">Circular Glass Design</div>
+                <div class="before-after">
+                    <div><img src="images/circular-before.jpg" alt="Before"><span class="ba-label">Before</span></div>
+                    <div><img src="images/circular-after.jpg" alt="After"><span class="ba-label">After</span></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Reviews Section -->
+    <!-- Reviews -->
     <section class="content-section" id="reviews">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">Customer Reviews</h2>
-        <p class="section-subtitle">See what our customers are saying</p>
-        
-        <div style="text-align: center; margin-bottom: 40px;">
-            <div style="font-size: 3em; color: #d4af37; margin-bottom: 10px;">★★★★★</div>
-            <p style="font-size: 1.5em; color: #6d1f1f; font-weight: bold;">5.0 Star Rating on Google</p>
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Customer <span>Reviews</span></h2>
+        <div class="section-divider"></div>
+        <div style="text-align:center; margin-bottom: 40px;">
+            <div style="font-size: 2.5em; color: #cc0000; margin-bottom: 5px;">★★★★★</div>
+            <p style="font-weight: 700; font-size: 1.2em; text-transform: uppercase; letter-spacing: 1px;">5.0 Star Rating on Google</p>
         </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
-            <!-- Review cards will go here - add John's actual Google reviews -->
-            <div style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 4px solid #d4af37;">
-                <div style="color: #d4af37; font-size: 1.5em; margin-bottom: 10px;">★★★★★</div>
-                <p style="font-style: italic; margin-bottom: 15px; line-height: 1.6;">"Excellent work! John transformed our old front door. It looks brand new. Highly recommend Grand Doors!"</p>
-                <p style="font-weight: bold; color: #6d1f1f;">- Happy Customer</p>
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Excellent work! John transformed our old front door. It looks brand new. Highly recommend Grand Doors!"</p>
+                <p class="review-author">— Happy Customer</p>
             </div>
-            
-            <div style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 4px solid #d4af37;">
-                <div style="color: #d4af37; font-size: 1.5em; margin-bottom: 10px;">★★★★★</div>
-                <p style="font-style: italic; margin-bottom: 15px; line-height: 1.6;">"Professional service from start to finish. The attention to detail was impressive. Our doors have never looked better!"</p>
-                <p style="font-weight: bold; color: #6d1f1f;">- Satisfied Client</p>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Professional service from start to finish. The attention to detail was impressive. Our doors have never looked better!"</p>
+                <p class="review-author">— Satisfied Client</p>
             </div>
-            
-            <div style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 4px solid #d4af37;">
-                <div style="color: #d4af37; font-size: 1.5em; margin-bottom: 10px;">★★★★★</div>
-                <p style="font-style: italic; margin-bottom: 15px; line-height: 1.6;">"Great experience! Fair pricing and quality craftsmanship. Will definitely use Grand Doors again."</p>
-                <p style="font-weight: bold; color: #6d1f1f;">- Repeat Customer</p>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Great experience! Fair pricing and quality craftsmanship. Will definitely use Grand Doors again."</p>
+                <p class="review-author">— Repeat Customer</p>
             </div>
         </div>
-        
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="https://www.google.com/search?q=Grand+Doors+Refinishing+Conroe" target="_blank" style="display: inline-block; background: #4285f4; color: #fff; padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1em;">Read More Reviews on Google</a>
+        <div style="text-align: center; margin-bottom: 60px;">
+            <a href="https://www.google.com/search?q=Grand+Doors+Refinishing+Conroe" target="_blank" class="google-btn">Read More Reviews on Google</a>
         </div>
 
-        <!-- Write a Review Form -->
-        <div style="max-width: 700px; margin: 60px auto 0; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 6px 25px rgba(0,0,0,0.12); border-top: 4px solid #6d1f1f;">
-            <h3 style="color: #6d1f1f; font-size: 1.8em; margin-bottom: 8px; text-align: center;">Leave a Review</h3>
-            <p style="text-align: center; color: #777; margin-bottom: 30px;">We'd love to hear about your experience!</p>
-
+        <!-- Leave a Review -->
+        <div class="review-form-wrap">
+            <h3>Leave a Review</h3>
+            <p>We'd love to hear about your experience!</p>
             <form id="reviewForm" action="https://formspree.io/f/mzdkaqvo" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_subject" value="New Customer Review - Grand Doors">
-
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                     <div>
-                        <label style="display: block; margin-bottom: 6px; font-weight: bold; color: #2c1810;">Your Name *</label>
-                        <input type="text" name="reviewer_name" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em;">
+                        <label style="display: block; font-weight: 700; font-size: 0.85em; text-transform: uppercase; margin-bottom: 8px;">Your Name *</label>
+                        <input type="text" name="reviewer_name" required class="form-input" style="margin-bottom:0;">
                     </div>
                     <div>
-                        <label style="display: block; margin-bottom: 6px; font-weight: bold; color: #2c1810;">Star Rating *</label>
-                        <div id="starRating" style="font-size: 2.2em; cursor: pointer; letter-spacing: 4px; user-select: none;" data-rating="0">
-                            <span onclick="setRating(1)">☆</span>
-                            <span onclick="setRating(2)">☆</span>
-                            <span onclick="setRating(3)">☆</span>
-                            <span onclick="setRating(4)">☆</span>
-                            <span onclick="setRating(5)">☆</span>
-                        </div>
-                        <input type="hidden" name="star_rating" id="starRatingValue" required value="">
+                        <label style="display: block; font-weight: 700; font-size: 0.85em; text-transform: uppercase; margin-bottom: 8px;">Star Rating *</label>
+                        <div id="starRating" class="star-row"><span onclick="setRating(1)">☆</span><span onclick="setRating(2)">☆</span><span onclick="setRating(3)">☆</span><span onclick="setRating(4)">☆</span><span onclick="setRating(5)">☆</span></div>
+                        <input type="hidden" name="star_rating" id="starRatingValue" value="">
                     </div>
                 </div>
-
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 6px; font-weight: bold; color: #2c1810;">Your Review *</label>
-                    <textarea name="review_text" required rows="4" placeholder="Tell others about your experience with Grand Doors..." style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; resize: vertical;"></textarea>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: 700; font-size: 0.85em; text-transform: uppercase; margin-bottom: 8px;">Your Review *</label>
+                    <textarea name="review_text" required rows="4" class="form-input" style="margin-bottom:0; resize: vertical;" placeholder="Tell others about your experience..."></textarea>
                 </div>
-
-                <div style="border: 2px dashed #d4af37; padding: 25px; text-align: center; border-radius: 8px; background: #fdf9f0; margin-bottom: 20px;">
-                    <label style="cursor: pointer; color: #6d1f1f; font-weight: bold; font-size: 1.05em;">
-                        📸 Add Photos (Optional)<br>
-                        <small style="color: #999; font-weight: normal;">Show off your beautiful door! JPG/PNG up to 10MB each</small>
-                        <input type="file" name="review_photos" accept="image/*" multiple style="display: none;" onchange="showReviewFileNames(this)">
-                    </label>
-                    <div id="reviewFileNames" style="margin-top: 8px; font-size: 0.9em; color: #5d4037;"></div>
+                <div class="photo-upload" style="margin-bottom: 15px;">
+                    <label>📸 Add Photos (Optional) — <small style="font-weight: normal; color: #555;">Show off your beautiful door!</small><input type="file" name="review_photos" accept="image/*" multiple style="display:none;" onchange="showReviewFileNames(this)"></label>
+                    <div id="reviewFileNames" style="margin-top: 8px; font-size: 0.85em; color: #555;"></div>
                 </div>
-
-                <button type="submit" style="width: 100%; padding: 16px; background: #6d1f1f; color: #fff; font-size: 1.2em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#8b2828'" onmouseout="this.style.background='#6d1f1f'">Submit Review</button>
+                <button type="submit" class="btn-submit">Submit Review</button>
             </form>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="content-section" id="portfolio">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">Portfolio</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <h3>Elegant Double Doors</h3>
-                <div class="before-after">
-                    <div>
-                        <img src="images/file_29---afb9a228-f0e3-4cc1-b9c0-e947b0f14cbf.jpg" alt="Before">
-                        <span class="label">BEFORE</span>
-                    </div>
-                    <div>
-                        <img src="images/file_30---415ee930-ecae-468f-98e5-c5a8ede872b2.jpg" alt="After">
-                        <span class="label">AFTER</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <h3>Arched Double Doors</h3>
-                <div class="before-after">
-                    <div>
-                        <img src="images/file_31---45573345-bf40-4bf9-9457-6bca41b1d9b3.jpg" alt="Before">
-                        <span class="label">BEFORE</span>
-                    </div>
-                    <div>
-                        <img src="images/file_32---93cafd14-a18a-4b49-9acd-d1446b29a113.jpg" alt="After">
-                        <span class="label">AFTER</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <h3>Circular Glass Design</h3>
-                <div class="before-after">
-                    <div>
-                        <img src="images/circular-after.jpg" alt="Before">
-                        <span class="label">BEFORE</span>
-                    </div>
-                    <div>
-                        <img src="images/circular-before.jpg" alt="After">
-                        <span class="label">AFTER</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Doors Services Section -->
+    <!-- Door Services -->
     <section class="content-section" id="doors">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">Door Services</h2>
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Door <span>Services</span></h2>
+        <div class="section-divider"></div>
         <div class="service-grid">
             <div class="service-card">
                 <h3>Restoration</h3>
-                <p class="price">$99</p>
-                <p>Light restoration for doors showing minor wear. We bring back the original beauty with careful attention to detail.</p>
-                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
+                <div class="service-price">$99</div>
+                <p>Light restoration for doors showing minor wear. Expert attention brings back the original beauty. <strong>Per door</strong> — double doors $198.</p>
+                <button class="btn-book" onclick="showSection('contact')">Book Now</button>
             </div>
             <div class="service-card">
                 <h3>Refinish</h3>
-                <p class="price">$199</p>
-                <p>Complete refinishing for heavily damaged doors. Strip, sand, and apply a beautiful new finish that lasts.</p>
-                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
+                <div class="service-price">$199</div>
+                <p>Complete refinishing — strip, sand, stain, and four coats of marine-grade urethane. Built to last. <strong>Per door</strong> — double doors $398.</p>
+                <button class="btn-book" onclick="showSection('contact')">Book Now</button>
             </div>
             <div class="service-card">
                 <h3>Paint</h3>
-                <p class="price">$150</p>
+                <div class="service-price">$150</div>
                 <p>Professional door painting with premium paints. Transform your entryway with lasting curb appeal and protection.</p>
-                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
+                <button class="btn-book" onclick="showSection('contact')">Book Now</button>
             </div>
-            <div class="service-card" style="border: 3px solid #d4af37; background: rgba(212, 175, 55, 0.1);">
+            <div class="service-card featured">
                 <h3>Executive Package</h3>
-                <p class="price">$299</p>
-                <p>Complete transformation: strip, repair, refinish, and weatherstripping. The ultimate door restoration for discerning homeowners.</p>
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #d4af37; font-weight: bold; color: #6d1f1f; font-size: 0.95em;">+ Annual Door Maintenance: $49/yr (normally $99/yr) — locked in for 3 years</p>
-                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #d4af37; color: #2c1810; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
+                <div class="service-price">$299</div>
+                <p>The complete transformation: full refinish, weatherstripping, back door maintenance, and premium protective coating.</p>
+                <p class="service-note">+ Annual Maintenance: $49/yr (normally $99/yr) — locked in for 3 years</p>
+                <button class="btn-book" onclick="showSection('contact')">Book Now</button>
             </div>
         </div>
     </section>
 
-    <!-- Weatherstripping Services Section -->
+    <!-- Weatherstripping -->
     <section class="content-section" id="weatherstripping">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">Weatherstripping Services</h2>
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Weatherstripping <span>Services</span></h2>
+        <div class="section-divider"></div>
         <div class="service-grid">
             <div class="service-card">
                 <h3>Single Door</h3>
-                <p class="price">$99</p>
-                <p>Cushion weatherstripping</p>
-                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
+                <div class="service-price">$99</div>
+                <p>Cushion weatherstripping for single doors. Keeps the elements out and the comfort in.</p>
+                <button class="btn-book" onclick="showSection('contact')">Book Now</button>
             </div>
             <div class="service-card">
                 <h3>Bottom Sweeps</h3>
-                <p class="price">$35</p>
-                <p>Door bottom sealing</p>
-                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
+                <div class="service-price">$35</div>
+                <p>Door bottom seal — stops drafts, dust, and pests.</p>
+                <button class="btn-book" onclick="showSection('contact')">Book Now</button>
             </div>
             <div class="service-card">
                 <h3>Double Door</h3>
-                <p class="price">$150</p>
-                <p>Complete double door seal</p>
-                <button onclick="showSection('contact')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Book Now</button>
+                <div class="service-price">$150</div>
+                <p>Complete weatherstripping for double doors. Full frame seal for maximum protection.</p>
+                <button class="btn-book" onclick="showSection('contact')">Book Now</button>
             </div>
         </div>
     </section>
 
-    <!-- Other Services Section -->
+    <!-- Other Services -->
     <section class="content-section" id="other">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">Other Services</h2>
-        <div class="service-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Other <span>Services</span></h2>
+        <div class="section-divider"></div>
+        <div class="service-grid">
             <div class="service-card">
                 <h3>Garage Doors</h3>
-                <p class="price">Call for Quote</p>
-                <p>Professional garage door restoration and refinishing. Bring new life to your garage entrance with our expert craftsmanship.</p>
-                <button onclick="showSection('quote')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Request Quote</button>
+                <div class="service-price" style="font-size: 1.5em;">Call for Quote</div>
+                <p>Professional garage door restoration and refinishing. Bring new life to your garage entrance.</p>
+                <button class="btn-book" onclick="showSection('quote')">Request Quote</button>
             </div>
             <div class="service-card">
                 <h3>Furniture Restoration</h3>
-                <p class="price">Call for Quote</p>
-                <p>Restore the beauty of your cherished furniture pieces. From antiques to modern pieces, we handle each with care.</p>
-                <button onclick="showSection('quote')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Request Quote</button>
+                <div class="service-price" style="font-size: 1.5em;">Call for Quote</div>
+                <p>Restore cherished furniture pieces — antiques to modern, handled with expert care.</p>
+                <button class="btn-book" onclick="showSection('quote')">Request Quote</button>
             </div>
             <div class="service-card">
                 <h3>Wooden Pillars</h3>
-                <p class="price">Call for Quote</p>
-                <p>Refinish and restore wooden pillars and columns. Enhance your home's architectural features with expert restoration.</p>
-                <button onclick="showSection('quote')" style="margin-top: 20px; width: 100%; padding: 12px; background: #6d1f1f; color: #f5f0eb; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em;">Request Quote</button>
+                <div class="service-price" style="font-size: 1.5em;">Call for Quote</div>
+                <p>Refinish and restore wooden pillars and columns. Enhance your home's architectural features.</p>
+                <button class="btn-book" onclick="showSection('quote')">Request Quote</button>
             </div>
         </div>
     </section>
 
-    <!-- Request Quote Section -->
+    <!-- Free Quote -->
     <section class="content-section" id="quote">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">Request a Quote</h2>
-        <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 50px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Free <span>Quote</span></h2>
+        <div class="section-divider"></div>
+        <div class="quote-wrap">
             <form id="quoteForm" action="https://formspree.io/f/mzdkaqvo" method="POST" enctype="multipart/form-data">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Your Name *</label>
-                        <input type="text" name="name" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Your Name *</label>
+                        <input type="text" name="name" required class="form-input" style="margin-bottom:0;">
                     </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Phone Number *</label>
-                        <input type="tel" name="phone" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" required class="form-input" style="margin-bottom:0;">
                     </div>
                 </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Email Address *</label>
-                    <input type="email" name="email" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" name="email" required class="form-input" style="margin-bottom:0;">
                 </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Service Needed *</label>
-                    <select name="service" required style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em;">
+                <div class="form-group">
+                    <label>Service Needed *</label>
+                    <select name="service" required class="form-input" style="margin-bottom:0;">
                         <option value="">Select a service...</option>
-                        <option value="restoration">Door Restoration - $99</option>
-                        <option value="refinish">Door Refinish - $199</option>
-                        <option value="paint">Door Paint - $150</option>
-                        <option value="executive">Executive Package - $299</option>
-                        <option value="weatherstripping-single">Weatherstripping Single - $99</option>
-                        <option value="weatherstripping-double">Weatherstripping Double - $150</option>
-                        <option value="sweeps">Bottom Sweeps - $35</option>
-                        <option value="garage">Garage Doors</option>
-                        <option value="furniture">Furniture Restoration</option>
-                        <option value="pillars">Wooden Pillars</option>
+                        <option>Door Restoration - $99</option>
+                        <option>Door Refinish - $199</option>
+                        <option>Door Paint - $150</option>
+                        <option>Executive Package - $299</option>
+                        <option>Weatherstripping Single - $99</option>
+                        <option>Weatherstripping Double - $150</option>
+                        <option>Bottom Sweeps - $35</option>
+                        <option>Garage Doors</option>
+                        <option>Furniture Restoration</option>
+                        <option>Wooden Pillars</option>
                     </select>
                 </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #2c1810;">Project Details</label>
-                    <textarea name="message" style="width: 100%; padding: 15px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; min-height: 120px; resize: vertical;" placeholder="Tell us about your project..."></textarea>
+                <div class="form-group">
+                    <label>Project Details</label>
+                    <textarea name="message" rows="4" class="form-input" style="margin-bottom:0; resize:vertical;" placeholder="Tell us about your project..."></textarea>
                 </div>
-                
-                <div style="border: 2px dashed #d4af37; padding: 30px; text-align: center; border-radius: 8px; background: #f5f0eb; margin-bottom: 20px;">
-                    <label style="cursor: pointer; color: #6d1f1f; font-weight: bold; font-size: 1.1em;">
-                        📸 Upload Photos of Your Door/Project<br>
-                        <small style="color: #999; font-weight: normal;">Click to select files (JPG, PNG up to 10MB each)</small>
-                        <input type="file" name="photos" accept="image/*" multiple style="display: none;" onchange="showFileNames(this)">
-                    </label>
-                    <div id="fileNames" style="margin-top: 10px; font-size: 0.9em; color: #5d4037;"></div>
+                <div class="photo-drop" style="margin-bottom: 20px;">
+                    <label>📸 Upload Photos of Your Door &nbsp;<small style="font-weight:normal; color:#777;">JPG/PNG up to 10MB each</small><input type="file" name="photos" accept="image/*" multiple style="display:none;" onchange="showFileNames(this)"></label>
+                    <div id="fileNames" style="margin-top: 8px; font-size:0.85em; color:#555;"></div>
                 </div>
-                
-                <button type="submit" style="width: 100%; padding: 20px; background: #6d1f1f; color: #f5f0eb; font-size: 1.3em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; transition: all 0.3s;" onmouseover="this.style.background='#8b2828'" onmouseout="this.style.background='#6d1f1f'">Submit Quote Request</button>
-                
-                <p style="text-align: center; margin-top: 20px; color: #5d4037;">Or call us directly: <a href="tel:+19364448756" style="color: #6d1f1f; font-weight: bold;">(936) 444-8756</a></p>
+                <button type="submit" class="btn-submit">Submit Quote Request</button>
+                <p style="text-align:center; margin-top: 15px; color: #666; font-size: 0.9em;">Or call us: <a href="tel:+19364448756" style="color: #cc0000; font-weight: 700;">(936) 444-8756</a></p>
             </form>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact / Book -->
     <section class="content-section" id="contact">
-        <button class="back-to-home" onclick="hideAllSections()">← Back</button>
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-info">
-            <p>Serving Conroe, The Woodlands, and surrounding communities</p>
-            <div class="phone-number">
-                <a href="tel:+19364448756">(936) 444-8756</a>
+        <button class="back-btn" onclick="hideAllSections()">← Back</button>
+        <h2 class="section-title">Contact <span>&amp; Book</span></h2>
+        <div class="section-divider"></div>
+        <div class="contact-grid">
+            <div class="contact-info-block">
+                <h3>Get In Touch</h3>
+                <p class="contact-detail">Serving Conroe, The Woodlands &amp; Houston</p>
+                <a href="tel:+19364448756" class="contact-phone">(936) 444-8756</a>
+                <p class="contact-detail"><a href="mailto:granddoorsrefinishing21@gmail.com">granddoorsrefinishing21@gmail.com</a></p>
+                <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="color: #aaa; font-size: 0.9em; margin-bottom: 8px;">Mon – Fri: 8:00 AM – 6:00 PM</p>
+                    <p style="color: #aaa; font-size: 0.9em;">Sat: 9:00 AM – 3:00 PM</p>
+                </div>
             </div>
-            <p>granddoorsrefinishing21@gmail.com</p>
-        </div>
-        
-        <h3 style="text-align: center; font-size: 2em; color: #6d1f1f; margin: 40px 0 30px;">Schedule Your Appointment</h3>
-        <div class="scheduler">
-            <input type="text" placeholder="Your Name *" required>
-            <input type="tel" placeholder="Phone Number *" required>
-            <input type="email" placeholder="Email Address *" required>
-            <input type="date" placeholder="Preferred Date" required>
-            <select required>
-                <option value="">Select Service...</option>
-                <option value="restoration">Restoration ($99)</option>
-                <option value="refinish">Refinish ($199)</option>
-                <option value="paint">Paint ($150)</option>
-                <option value="weatherstripping-single">Weatherstripping - Single Door ($99)</option>
-                <option value="weatherstripping-double">Weatherstripping - Double Door ($150)</option>
-                <option value="weatherstripping-sweep">Bottom Sweeps ($35)</option>
-            </select>
-            <button type="button" onclick="submitAppointment()">Schedule Appointment</button>
+            <div class="scheduler-block">
+                <h3>Schedule Appointment</h3>
+                <input type="text" placeholder="Your Name *" class="form-input" required>
+                <input type="tel" placeholder="Phone Number *" class="form-input" required>
+                <input type="email" placeholder="Email Address *" class="form-input" required>
+                <input type="date" class="form-input" required>
+                <select class="form-input" required>
+                    <option value="">Select Service...</option>
+                    <option>Restoration ($99)</option>
+                    <option>Refinish ($199)</option>
+                    <option>Paint ($150)</option>
+                    <option>Executive Package ($299)</option>
+                    <option>Weatherstripping - Single ($99)</option>
+                    <option>Weatherstripping - Double ($150)</option>
+                    <option>Bottom Sweeps ($35)</option>
+                </select>
+                <button class="btn-submit" onclick="submitAppointment()">Schedule Appointment</button>
+            </div>
         </div>
     </section>
 
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            // Show selected section
-            if (sectionId !== 'transform') {
-                document.getElementById(sectionId).classList.add('active');
-                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-                // Hide navigation
-                document.querySelector('nav').classList.add('hidden');
-            } else {
-                // Redirect to preview page
-                window.location.href = 'preview.html';
-            }
-        }
-        
-        function hideAllSections() {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Show navigation
-            document.querySelector('nav').classList.remove('hidden');
-        }
-        
-        function toggleMenu() {
-            const nav = document.querySelector('nav');
-            const wrapper = document.querySelector('.nav-scroll-wrapper');
-            const body = document.body;
-            const isOpening = !nav.classList.contains('open');
-            nav.classList.toggle('open');
-            body.classList.toggle('menu-open');
-            // Scroll menu to top when opening
-            if (isOpening && wrapper) {
-                wrapper.scrollTop = 0;
-            }
+        function showSection(id) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            if (id === 'transform') { window.location.href = 'preview.html'; return; }
+            const el = document.getElementById(id);
+            if (el) { el.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+            document.querySelector('nav').classList.add('hidden');
+            if (window.innerWidth <= 768) { document.querySelector('nav').classList.remove('open'); document.body.classList.remove('menu-open'); }
         }
 
-        // Close menu when tapping overlay
+        function hideAllSections() {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelector('nav').classList.remove('hidden');
+        }
+
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            const isOpening = !nav.classList.contains('open');
+            nav.classList.toggle('open');
+            document.body.classList.toggle('menu-open');
+            if (isOpening) { const w = document.querySelector('.nav-scroll-wrapper'); if (w) w.scrollTop = 0; }
+        }
+
         document.addEventListener('click', function(e) {
             const nav = document.querySelector('nav');
             const toggle = document.querySelector('.menu-toggle');
             if (nav && nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
-                nav.classList.remove('open');
-                document.body.classList.remove('menu-open');
+                nav.classList.remove('open'); document.body.classList.remove('menu-open');
             }
         });
-        
-        // Close menu when clicking a link
+
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.nav-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        document.querySelector('nav').classList.remove('open');
-                    }
-                });
+            document.querySelectorAll('.nav-button').forEach(b => {
+                b.addEventListener('click', function() { if (window.innerWidth <= 768) { document.querySelector('nav').classList.remove('open'); document.body.classList.remove('menu-open'); } });
             });
+            const qf = document.getElementById('quoteForm');
+            if (qf) { qf.addEventListener('submit', function(e) { e.preventDefault(); if(typeof gtag!=='undefined') gtag('event','quote_request',{'event_category':'engagement'}); alert('Thank you! We will contact you within 24 hours.'); this.reset(); document.getElementById('fileNames').textContent=''; }); }
+            const rf = document.getElementById('reviewForm');
+            if (rf) { rf.addEventListener('submit', function(e) { if (!document.getElementById('starRatingValue').value) { e.preventDefault(); alert('Please select a star rating.'); return; } alert('Thank you for your review!'); }); }
         });
-        
+
         function submitAppointment() {
-            // Track event
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'schedule_appointment', {
-                    'event_category': 'engagement'
-                });
-            }
-            
+            if(typeof gtag!=='undefined') gtag('event','schedule_appointment',{'event_category':'engagement'});
             alert('Thank you! We will contact you within 24 hours to confirm your appointment.');
-            // TODO: Add backend submission logic
         }
-        
-        function setRating(rating) {
-            const stars = document.querySelectorAll('#starRating span');
-            document.getElementById('starRatingValue').value = rating;
-            document.querySelector('#starRating').dataset.rating = rating;
-            stars.forEach((s, i) => { s.textContent = i < rating ? '★' : '☆'; s.style.color = i < rating ? '#d4af37' : '#ccc'; });
+
+        function setRating(r) {
+            document.getElementById('starRatingValue').value = r;
+            document.querySelectorAll('#starRating span').forEach((s,i) => { s.textContent = i<r?'★':'☆'; s.style.color = i<r?'#cc0000':'#ccc'; });
         }
 
         function showReviewFileNames(input) {
-            const el = document.getElementById('reviewFileNames');
-            el.textContent = input.files.length > 0 ? 'Selected: ' + Array.from(input.files).map(f => f.name).join(', ') : '';
+            document.getElementById('reviewFileNames').textContent = input.files.length > 0 ? 'Selected: ' + Array.from(input.files).map(f=>f.name).join(', ') : '';
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const reviewForm = document.getElementById('reviewForm');
-            if (reviewForm) {
-                reviewForm.addEventListener('submit', function(e) {
-                    if (!document.getElementById('starRatingValue').value) {
-                        e.preventDefault();
-                        alert('Please select a star rating.');
-                        return;
-                    }
-                    alert('Thank you for your review! We appreciate your feedback.');
-                });
-            }
-        });
 
         function showFileNames(input) {
-            const fileList = document.getElementById('fileNames');
-            if (input.files.length > 0) {
-                const fileNames = Array.from(input.files).map(f => f.name).join(', ');
-                fileList.textContent = `Selected: ${fileNames}`;
-            } else {
-                fileList.textContent = '';
-            }
+            document.getElementById('fileNames').textContent = input.files.length > 0 ? 'Selected: ' + Array.from(input.files).map(f=>f.name).join(', ') : '';
         }
-        
-        // Handle quote form submission
-        document.addEventListener('DOMContentLoaded', function() {
-            const quoteForm = document.getElementById('quoteForm');
-            if (quoteForm) {
-                quoteForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Track event
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'quote_request', {
-                            'event_category': 'engagement'
-                        });
-                    }
-                    
-                    alert('Thank you for your quote request! We will contact you within 24 hours.');
-                    this.reset();
-                    document.getElementById('fileNames').textContent = '';
-                    // TODO: Add backend submission logic
-                });
-            }
-        });
     </script>
 </body>
 </html>
