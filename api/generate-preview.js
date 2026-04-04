@@ -1,4 +1,6 @@
 const Replicate = require('replicate');
+const https = require('https');
+const http = require('http');
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,19 +31,19 @@ module.exports = async function handler(req, res) {
     // Upload to imgbb
     const base64Only = imageData.replace(/^data:image\/\w+;base64,/, '');
     
-    const formData = new URLSearchParams();
-    formData.append('image', base64Only);
-    formData.append('expiration', '600'); // 10 min temp
+    const imgbbRes = await fetch(
+      `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `image=${encodeURIComponent(base64Only)}&expiration=600`,
+      }
+    );
     
-    const uploadRes = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
-      method: 'POST',
-      body: formData,
-    });
-    const uploadData = await uploadRes.json();
+    const imgbbData = await imgbbRes.json();
+    if (!imgbbData.success) throw new Error('Upload failed: ' + JSON.stringify(imgbbData.error));
     
-    if (!uploadData.success) throw new Error('Image upload failed: ' + JSON.stringify(uploadData));
-    
-    const imageUrl = uploadData.data.url;
+    const imageUrl = imgbbData.data.url;
 
     const output = await replicate.run(
       "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f",
