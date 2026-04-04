@@ -48,3 +48,4 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Failed to generate preview', details: error.message });
   }
 }
+// cache bust Sat Apr  4 11:58:14 CDT 2026
