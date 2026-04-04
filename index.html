@@ -436,27 +436,107 @@
         <button class="back-btn" onclick="hideAllSections()">← Back</button>
         <h2 class="section-title">Our <span>Portfolio</span></h2>
         <div class="section-divider"></div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div class="portfolio-item-title">Elegant Double Doors</div>
-                <div class="before-after">
-                    <div><img src="images/file_29---afb9a228-f0e3-4cc1-b9c0-e947b0f14cbf.jpg" alt="Before"><span class="ba-label">Before</span></div>
-                    <div><img src="images/file_30---415ee930-ecae-468f-98e5-c5a8ede872b2.jpg" alt="After"><span class="ba-label">After</span></div>
+
+        <!-- Category Tabs -->
+        <div style="display:flex; gap:0; justify-content:center; margin-bottom:40px; flex-wrap:wrap;">
+            <button onclick="showTab('tab-doors')" id="btn-doors" style="padding:14px 30px; font-weight:700; font-size:0.9em; text-transform:uppercase; letter-spacing:1px; border:none; cursor:pointer; background:#cc0000; color:#fff; border-right:1px solid rgba(255,255,255,0.2);">Doors</button>
+            <button onclick="showTab('tab-cabinets')" id="btn-cabinets" style="padding:14px 30px; font-weight:700; font-size:0.9em; text-transform:uppercase; letter-spacing:1px; border:none; cursor:pointer; background:#333; color:#fff; border-right:1px solid rgba(255,255,255,0.2);">Cabinets</button>
+            <button onclick="showTab('tab-furniture')" id="btn-furniture" style="padding:14px 30px; font-weight:700; font-size:0.9em; text-transform:uppercase; letter-spacing:1px; border:none; cursor:pointer; background:#333; color:#fff;">Furniture</button>
+        </div>
+
+        <!-- Doors Tab -->
+        <div id="tab-doors">
+            <!-- Original before/after sets -->
+            <div class="portfolio-grid" style="margin-bottom:30px;">
+                <div class="portfolio-item">
+                    <div class="portfolio-item-title">Elegant Double Doors</div>
+                    <div class="before-after">
+                        <div><img src="images/file_29---afb9a228-f0e3-4cc1-b9c0-e947b0f14cbf.jpg" alt="Before"><span class="ba-label">Before</span></div>
+                        <div><img src="images/file_30---415ee930-ecae-468f-98e5-c5a8ede872b2.jpg" alt="After"><span class="ba-label">After</span></div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-item-title">Arched Double Doors</div>
+                    <div class="before-after">
+                        <div><img src="images/file_31---45573345-bf40-4bf9-9457-6bca41b1d9b3.jpg" alt="Before"><span class="ba-label">Before</span></div>
+                        <div><img src="images/file_32---93cafd14-a18a-4b49-9acd-d1446b29a113.jpg" alt="After"><span class="ba-label">After</span></div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-item-title">Circular Glass Design</div>
+                    <div class="before-after">
+                        <div><img src="images/circular-before.jpg" alt="Before"><span class="ba-label">Before</span></div>
+                        <div><img src="images/circular-after.jpg" alt="After"><span class="ba-label">After</span></div>
+                    </div>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-item-title">Arched Double Doors</div>
-                <div class="before-after">
-                    <div><img src="images/file_31---45573345-bf40-4bf9-9457-6bca41b1d9b3.jpg" alt="Before"><span class="ba-label">Before</span></div>
-                    <div><img src="images/file_32---93cafd14-a18a-4b49-9acd-d1446b29a113.jpg" alt="After"><span class="ba-label">After</span></div>
-                </div>
+            <!-- Additional door photos -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:15px;">
+                <img src="images/portfolio/doors/IMG_3967_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_3970_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_3971_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_3972_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_3993_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_4004_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_4005_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_4072_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_4085_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_4090_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_4151_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/doors/IMG_4360_MP.jpg" alt="Door Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-item-title">Circular Glass Design</div>
-                <div class="before-after">
-                    <div><img src="images/circular-before.jpg" alt="Before"><span class="ba-label">Before</span></div>
-                    <div><img src="images/circular-after.jpg" alt="After"><span class="ba-label">After</span></div>
-                </div>
+        </div>
+
+        <!-- Cabinets Tab -->
+        <div id="tab-cabinets" style="display:none;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:15px;">
+                <img src="images/portfolio/cabinets/IMG_4198_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4203_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4204_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4206_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4207_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4208_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4209.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4210.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4212_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4213_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4214_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4215_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4216_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4217_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4218_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4226_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4227_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/cabinets/IMG_4228_MP.jpg" alt="Cabinet Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+            </div>
+        </div>
+
+        <!-- Furniture Tab -->
+        <div id="tab-furniture" style="display:none;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:15px;">
+                <img src="images/portfolio/furniture/IMG_4022_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4040_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4320_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4322_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4323_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4325_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4326_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4328_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4329_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4330.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4331.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4332.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4333.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4346.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4347_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4348_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4349_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4350_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4351_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4352_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4353_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4354_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
+                <img src="images/portfolio/furniture/IMG_4355_MP.jpg" alt="Furniture Work" style="width:100%;height:220px;object-fit:cover;border-radius:4px;">
             </div>
         </div>
     </section>
@@ -698,6 +778,14 @@
     </section>
 
     <script>
+        function showTab(tabId) {
+            ['tab-doors','tab-cabinets','tab-furniture'].forEach(t => document.getElementById(t).style.display='none');
+            document.getElementById(tabId).style.display='block';
+            const map = {'tab-doors':'btn-doors','tab-cabinets':'btn-cabinets','tab-furniture':'btn-furniture'};
+            Object.values(map).forEach(b => document.getElementById(b).style.background='#333');
+            document.getElementById(map[tabId]).style.background='#cc0000';
+        }
+
         function showSection(id) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
             if (id === 'transform') { window.location.href = 'preview.html'; return; }
