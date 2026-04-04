@@ -27,7 +27,7 @@ module.exports = async function handler(req, res) {
     const prompt = `A beautiful ${prompts[finishType] || prompts.natural}, professional photography, high quality, detailed, well-lit, residential entrance`;
 
     const output = await replicate.run(
-      "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60dc6215a3a4aaa20d0527e84",
+      "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f",
       {
         input: {
           image: imageData,
