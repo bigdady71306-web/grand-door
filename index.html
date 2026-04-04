@@ -22,10 +22,14 @@
         header {
             background: #000;
             border-bottom: 3px solid #cc0000;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
         }
+        .hero-banner { margin-top: 130px; }
+        main { margin-top: 130px; }
         .header-inner {
             display: flex;
             align-items: center;
@@ -41,6 +45,11 @@
 
         /* ===== TOP NAV TABS ===== */
         nav {
+            position: fixed;
+            top: 87px;
+            left: 0;
+            right: 0;
+            z-index: 999;
             background: #222;
             border-bottom: 1px solid #333;
             overflow-x: auto;
