@@ -15,24 +15,28 @@ module.exports = async function handler(req, res) {
     const replicate = new Replicate({ auth: process.env.REPLICATE_API_TOKEN });
 
     const prompts = {
-      'natural': 'professionally restored natural wood door, rich grain visible, clear protective coating, like new condition',
-      'dark-stain': 'dark mahogany stained wood door, deep rich brown color, glossy finish, elegant appearance',
-      'medium-stain': 'medium oak stained wood door, warm brown tones, smooth finish, classic look',
-      'light-stain': 'light cherry stained wood door, warm amber tones, natural grain visible, fresh finish',
-      'paint-white': 'freshly painted white door, smooth satin finish, clean modern look',
-      'paint-black': 'modern black painted door, sleek smooth finish, contemporary style',
-      'paint-custom': 'freshly painted door, smooth professional finish, vibrant clean color'
+      'natural': 'make it a professionally restored natural wood door with rich grain and clear protective coating',
+      'dark-stain': 'make it a dark mahogany stained wood door with deep rich brown color and glossy finish',
+      'medium-stain': 'make it a medium oak stained wood door with warm brown tones and smooth finish',
+      'light-stain': 'make it a light cherry stained wood door with warm amber tones',
+      'paint-white': 'make it a freshly painted white door with smooth satin finish',
+      'paint-black': 'make it a modern black painted door with sleek smooth finish',
+      'paint-custom': 'make it a freshly painted door with smooth professional finish'
     };
 
-    const prompt = `A beautiful ${prompts[finishType] || prompts.natural}, professional photography, high quality, detailed, well-lit, residential entrance`;
+    const prompt = prompts[finishType] || prompts.natural;
+
+    // Convert base64 to buffer and upload to Replicate
+    const base64Data = imageData.replace(/^data:image\/\w+;base64,/, '');
+    const imageBuffer = Buffer.from(base64Data, 'base64');
 
     const output = await replicate.run(
       "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f",
       {
         input: {
-          image: imageData,
+          image: imageBuffer,
           prompt,
-          negative_prompt: "blurry, low quality, distorted, damaged, ugly, poor lighting",
+          negative_prompt: "blurry, low quality, distorted, damaged, ugly",
           num_inference_steps: 30,
           image_guidance_scale: 1.5,
           guidance_scale: 7.5,
@@ -48,4 +52,5 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Failed to generate preview', details: error.message });
   }
 }
-// cache bust Sat Apr  4 11:58:14 CDT 2026
+
+// cache bust Sat Apr  4 16:57:44 UTC 2026
