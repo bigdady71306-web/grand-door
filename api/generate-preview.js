@@ -27,15 +27,15 @@ module.exports = async function handler(req, res) {
     const prompt = `A beautiful ${prompts[finishType] || prompts.natural}, professional photography, high quality, detailed, well-lit, residential entrance`;
 
     const output = await replicate.run(
-      "stability-ai/stable-diffusion-img2img:15a3689ee13b0d2616e98820eca31d4af4a0e80d6917f23e0c11b7f96e1c8d7e",
+      "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60dc6215a3a4aaa20d0527e84",
       {
         input: {
           image: imageData,
           prompt,
           negative_prompt: "blurry, low quality, distorted, damaged, ugly, poor lighting",
           num_inference_steps: 30,
+          image_guidance_scale: 1.5,
           guidance_scale: 7.5,
-          strength: 0.6,
         }
       }
     );
