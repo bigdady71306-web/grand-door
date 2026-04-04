@@ -34,8 +34,8 @@ module.exports = async function handler(req, res) {
       method: 'POST',
       headers: {
         'Authorization': `Token ${process.env.REPLICATE_API_TOKEN}`,
-        'Content-Type': 'application/octet-stream',
-        'Content-Length': imageBuffer.length,
+        'Content-Type': 'image/jpeg',
+        'Content-Disposition': 'attachment; filename="door.jpg"',
       },
       body: imageBuffer,
     });
