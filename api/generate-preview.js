@@ -26,15 +26,11 @@ module.exports = async function handler(req, res) {
 
     const prompt = prompts[finishType] || prompts.natural;
 
-    // Convert base64 to buffer and upload to Replicate
-    const base64Data = imageData.replace(/^data:image\/\w+;base64,/, '');
-    const imageBuffer = Buffer.from(base64Data, 'base64');
-
     const output = await replicate.run(
       "timothybrooks/instruct-pix2pix:30c1d0b916a6f8efce20493f5d61ee27491ab2a60437c13c588468b9810ec23f",
       {
         input: {
-          image: imageBuffer,
+          image: imageData,
           prompt,
           negative_prompt: "blurry, low quality, distorted, damaged, ugly",
           num_inference_steps: 30,
