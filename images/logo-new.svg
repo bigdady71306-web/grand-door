@@ -1,0 +1,38 @@
+<svg width="900" height="300" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+ <rect width="100%" height="100%" fill="black"/>
+
+ <!-- Door Icon -->
+ <g transform="translate(60,60)">
+ <!-- Outer door -->
+ <rect x="0" y="0" width="120" height="180" fill="none" stroke="white" stroke-width="6"/>
+ 
+ <!-- Inner panels -->
+ <rect x="20" y="20" width="35" height="60" fill="none" stroke="#ff2a2a" stroke-width="3"/>
+ <rect x="65" y="20" width="35" height="60" fill="none" stroke="#ff2a2a" stroke-width="3"/>
+ <rect x="20" y="100" width="35" height="60" fill="none" stroke="#ff2a2a" stroke-width="3"/>
+ <rect x="65" y="100" width="35" height="60" fill="none" stroke="#ff2a2a" stroke-width="3"/>
+
+ <!-- Handle -->
+ <circle cx="105" cy="95" r="5" fill="white"/>
+
+ <!-- Accent lines -->
+ <line x1="-8" y1="0" x2="-8" y2="180" stroke="#ff2a2a" stroke-width="4"/>
+ <line x1="120" y1="0" x2="120" y2="180" stroke="#2a6cff" stroke-width="4"/>
+ </g>
+
+ <!-- Main Text -->
+ <text x="250" y="130" font-family="Arial, Helvetica, sans-serif" font-size="70" fill="white" font-weight="bold">
+ GRAND
+ </text>
+ <text x="250" y="210" font-family="Arial, Helvetica, sans-serif" font-size="70" fill="white" font-weight="bold">
+ DOORS
+ </text>
+
+ <!-- Red underline -->
+ <line x1="250" y1="225" x2="680" y2="225" stroke="#ff2a2a" stroke-width="4"/>
+
+ <!-- Tagline -->
+ <text x="250" y="265" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#2a6cff">
+ Wood Door Refinishing
+ </text>
+</svg>
